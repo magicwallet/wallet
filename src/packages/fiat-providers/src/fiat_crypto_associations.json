@@ -1,0 +1,110 @@
+{
+  "bitcoin": [
+    {
+      "provider": "MoonPay",
+      "symbol": "btc"
+    },
+    {
+      "provider": "Mercuryo",
+      "symbol": "BTC"
+    },
+    {
+      "provider": "Ramp",
+      "symbol": "BTC"
+    },
+    {
+      "provider": "Transak",
+      "symbol": "BTC"
+    }
+  ],
+  "binance": [
+    {
+      "provider": "MoonPay",
+      "symbol": "bnb"
+    }
+  ],
+  "smartchain": [
+    {
+      "provider": "Mercuryo",
+      "symbol": "BNB"
+    },
+    {
+      "provider": "MoonPay",
+      "symbol": "bnb_bsc"
+    },
+    {
+      "provider": "Ramp",
+      "symbol": "BSC_BNB"
+    }
+  ],
+  "ethereum":[
+    {
+      "provider": "MoonPay",
+      "symbol": "eth"
+    },
+    {
+      "provider": "Mercuryo",
+      "symbol": "ETH"
+    },
+    {
+      "provider": "Ramp",
+      "symbol": "ETH_ETH"
+    }
+  ],
+  "polygon": [
+    {
+      "provider": "Ramp",
+      "symbol": "MATIC_MATIC"
+    },
+    {
+      "provider": "Mercuryo",
+      "symbol": "MATIC"
+    },
+    {
+      "provider": "MoonPay",
+      "symbol": "eth_polygon"
+    },
+    {
+      "provider": "Transak",
+      "symbol": "MATIC"
+    }
+  ],
+  "solana": [
+    {
+      "provider": "Ramp",
+      "symbol": "MATIC_MATIC"
+    },
+    {
+      "provider": "MoonPay",
+      "symbol": "sol"
+    },
+    {
+      "provider": "Transak",
+      "symbol": "SOL"
+    }
+  ],
+  "cosmos": [
+    {
+      "provider": "Ramp",
+      "symbol": "COSMOS_ATOM"
+    },
+    {
+      "provider": "MoonPay",
+      "symbol": "sol"
+    },
+    {
+      "provider": "Transak",
+      "symbol": "ATOM"
+    }
+  ],
+  "arbitrum": [
+    {
+      "provider": "Ramp",
+      "symbol": "ARBITRUM_ETH"
+    },
+    {
+      "provider": "MoonPay",
+      "symbol": "eth_arbitrum"
+    }
+  ]
+}

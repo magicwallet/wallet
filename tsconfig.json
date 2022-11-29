@@ -1,0 +1,21 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  /* Recommended React Native TSConfig base */
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    "allowSyntheticDefaultImports": true,
+    /* Completeness */
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    /* Skip type checking all .d.ts files. */
+    "lib": [
+      "dom",
+      "esnext",
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "strictPropertyInitialization": false
+  }
+}

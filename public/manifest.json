@@ -1,0 +1,37 @@
+{
+  "name": "Magic Wallet",
+  "description": "Magic Wallet Browser Extension",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "Magic",
+    "default_icon": "logo192.png",
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "logo192.png",
+    "48": "logo192.png",
+    "128": "logo192.png"
+  },
+  "background": {
+    "service_worker": "./static/js/main.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "./static/js/main.js"
+      ],
+      "all_frames": false,
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "activeTab"
+  ],
+  "optional_permissions": [
+    "<all_urls>"
+  ]
+}

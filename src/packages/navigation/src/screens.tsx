@@ -1,0 +1,16 @@
+export const enum Screen {
+  Splash = 'SplashScreen',
+  WELCOME = 'WelcomeScreen',
+  WALLET = 'WalletScreen',
+  COIN = 'CoinScreen',
+  IMPORT_WALLET = 'ImportWalletScreen',
+  RECEIVE = 'ReceiveScreen',
+  BUY_CRYPTO = 'BuyCryptoScreen',
+  SETTINGS = 'SettingsScreen',
+  WALLETS = 'WalletsScreen',
+  ABOUT_US = 'AboutUsScreen',
+  SELECT_ASSET = 'SelectAssetScreen',
+  SELECT_CHAIN = 'SelectChainScreen',
+  CURRENCY = 'CurrencyScreen',
+  COMMUNITY = 'CommunityScreen',
+}

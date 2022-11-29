@@ -1,0 +1,105 @@
+{
+  "name": "magic",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios --simulator=\"iPhone 14\"",
+    "ios:build": "",
+    "start": "react-native start",
+    "web": "react-scripts start",
+    "test": "jest",
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
+    "lint-fix": "eslint ./src --fix --ext .js,.jsx,.ts,.tsx",
+    "clean": "react-native start --reset-cache",
+    "clean:ios": "rm -rf ~/Library/Developer/Xcode/DerivedData && rm -rf ios/build && rm -rf ios/Pods",
+    "clean:web": "rm -rf /build && rm -rf /node_modules",
+    "clean:android": "cd android && ./gradlew clean",
+    "build": "yarn build:web",
+    "build:web": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
+    "build:extension": "yarn run build:web && cp -v build/static/js/main.*.js build/static/js/main.js",
+    "build:android:debug": "cd android && ./gradlew assembleDebug",
+    "build:android:release:assets-bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output ./android/app/src/main/assets/index.android.bundle",
+    "build:android:release:assemble": "cd android && ./gradlew assembleRelease",
+    "build:android:release:bundle": "cd android && ./gradlew bundleRelease",
+    "install:ios": "cd ios && pod install --repo-update",
+    "upgrade:all": "yarn upgrade --latest && yarn install:ios && cd ios && pod update hermes-engine --no-repo-update"
+  },
+  "dependencies": {
+    "@magicwallet/chain-providers": "*",
+    "@magicwallet/chain-services": "*",
+    "@magicwallet/chain-types": "*",
+    "@magicwallet/core-components": "*",
+    "@magicwallet/fiat-providers": "*",
+    "@magicwallet/json-rpc": "*",
+    "@magicwallet/navigation": "*",
+    "@magicwallet/styles": "*",
+    "@magicwallet/types": "*",
+    "@magicwallet/views": "*",
+    "@react-native-clipboard/clipboard": "1.11.1",
+    "@react-navigation/native": "6.0.14",
+    "@react-navigation/native-stack": "6.9.2",
+    "@reduxjs/toolkit": "1.9.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.70.6",
+    "react-native-device-info": "10.3.0",
+    "react-native-fast-image": "8.6.3",
+    "react-native-mmkv": "2.5.1",
+    "react-native-qrcode-svg": "6.1.2",
+    "react-native-safe-area-context": "4.4.1",
+    "react-native-screens": "3.18.2",
+    "react-native-svg": "13.6.0",
+    "react-native-web": "0.18.10",
+    "react-redux": "8.0.5",
+    "react-scripts": "5.0.1",
+    "redux": "4.2.0",
+    "redux-persist": "6.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.20.5",
+    "@babel/runtime": "7.20.6",
+    "@react-native-community/eslint-config": "3.2.0",
+    "@tsconfig/react-native": "2.0.2",
+    "@types/jest": "29.2.3",
+    "@types/react-native": "0.70.7",
+    "@types/react-test-renderer": "18.0.0",
+    "@typescript-eslint/eslint-plugin": "5.45.0",
+    "@typescript-eslint/parser": "5.45.0",
+    "babel-jest": "29.3.1",
+    "eslint": "8.28.0",
+    "eslint-plugin-jest": "27.1.6",
+    "jest": "29.3.1",
+    "lerna": "6.0.3",
+    "metro-react-native-babel-preset": "0.73.3",
+    "prettier": "2.8.0",
+    "typescript": "4.9.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "workspaces": [
+    "src/packages/*"
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

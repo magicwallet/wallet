@@ -1,0 +1,15 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": [
+      "DOM",
+      "ESNext",
+    ],
+    "strictPropertyInitialization": false,
+    "include": [
+      "src"
+    ],
+    "strictNullChecks": true,
+  }
+}

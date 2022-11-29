@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "assets": {
+    "binance_TWT-8C2": {
+      "asset": "binance_TWT-8C2",
+      "name": "Trust Wallet Token",
+      "symbol": "TWT",
+      "decimals": 8,
+      "type": "BEP2",
+      "info": {
+        "is_buy_available": false
+      }
+    },
+    "binance_BTCB-1DE": {
+      "asset": "binance_BTCB-1DE",
+      "name": "Bitcoin BEP2",
+      "symbol": "BTCB",
+      "decimals": 8,
+      "type": "BEP2",
+      "info": {
+        "is_buy_available": false
+      }
+    },
+    "binance_CAKE-435": {
+      "asset": "binance_CAKE-435",
+      "name": "PancakeSwap Token",
+      "symbol": "CAKE",
+      "decimals": 8,
+      "type": "BEP2",
+      "info": {
+        "is_buy_available": false
+      }
+    },
+    "binance_ETH-1C9": {
+      "asset": "binance_ETH-1C9",
+      "name": "ETH BEP2",
+      "symbol": "ETH-BEP2",
+      "decimals": 8,
+      "type": "BEP2",
+      "info": {
+        "is_buy_available": false
+      }
+    }
+  }
+}

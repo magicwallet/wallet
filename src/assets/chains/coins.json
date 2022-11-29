@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "assets": {
+    "binance": {
+      "asset": "binance",
+      "name": "BNB Chain",
+      "symbol": "BNB",
+      "decimals": 8,
+      "type": "native",
+      "info": {
+        "is_buy_available": true
+      }
+    },
+    "ethereum": {
+      "asset": "ethereum",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "decimals": 18,
+      "type": "native",
+      "info": {
+        "is_buy_available": true
+      }
+    },
+    "smartchain": {
+      "asset": "smartchain",
+      "name": "BNB BSC",
+      "symbol": "BNB",
+      "decimals": 18,
+      "type": "native",
+      "info": {
+        "is_buy_available": true
+      }
+    },
+    "solana": {
+      "asset": "solana",
+      "name": "Solana",
+      "symbol": "SOL",
+      "decimals": 9,
+      "type": "native",
+      "info": {
+        "is_buy_available": true
+      }
+    },
+    "aptos": {
+      "asset": "aptos",
+      "name": "Aptos",
+      "symbol": "APT",
+      "decimals": 8,
+      "type": "native",
+      "info": {
+        "is_buy_available": true
+      }
+    },
+    "polygon": {
+      "asset": "polygon",
+      "name": "Polygon",
+      "symbol": "MATIC",
+      "decimals": 18,
+      "type": "native",
+      "info": {
+        "is_buy_available": true
+      }
+    },
+    "cosmos": {
+      "asset": "cosmos",
+      "name": "Cosmos",
+      "symbol": "ATOM",
+      "decimals": 6,
+      "type": "native",
+      "info": {
+        "is_buy_available": true
+      }
+    },
+    "osmosis": {
+      "asset": "osmosis",
+      "name": "Osmosis",
+      "symbol": "OSMO",
+      "decimals": 6,
+      "type": "native",
+      "info": {
+        "is_buy_available": true
+      }
+    },
+    "arbitrum": {
+      "asset": "arbitrum",
+      "name": "Arbitrum",
+      "symbol": "ETH",
+      "decimals": 18,
+      "type": "native",
+      "info": {
+        "is_buy_available": true
+      }
+    },
+    "binance_TWT-8C2": {
+      "asset": "binance_TWT-8C2",
+      "name": "Trust Wallet Token",
+      "symbol": "TWT",
+      "decimals": 8,
+      "type": "BEP2",
+      "info": {
+        "is_buy_available": false
+      }
+    },
+    "binance_BTCB-1DE": {
+      "asset": "binance_BTCB-1DE",
+      "name": "Bitcoin BEP2",
+      "symbol": "BTCB",
+      "decimals": 8,
+      "type": "BEP2",
+      "info": {
+        "is_buy_available": false
+      }
+    },
+    "binance_CAKE-435": {
+      "asset": "binance_CAKE-435",
+      "name": "PancakeSwap Token",
+      "symbol": "CAKE",
+      "decimals": 8,
+      "type": "BEP2",
+      "info": {
+        "is_buy_available": false
+      }
+    },
+    "binance_ETH-1C9": {
+      "asset": "binance_ETH-1C9",
+      "name": "ETH BEP2",
+      "symbol": "ETH-BEP2",
+      "decimals": 8,
+      "type": "BEP2",
+      "info": {
+        "is_buy_available": false
+      }
+    }
+  }
+}

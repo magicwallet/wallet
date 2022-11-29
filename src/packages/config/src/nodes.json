@@ -1,0 +1,39 @@
+{
+  "bnb_chain": [
+    "https://dex-atlantic.binance.org",
+    "https://dex-asiapacific.binance.org",
+    "https://dex-european.binance.org"
+  ],
+  "solana": [
+    "https://api.mainnet-beta.solana.com",
+    "https://solana-api.projectserum.com",
+    "https://rpc.ankr.com/solana"
+  ],
+  "ethereum": [
+    "https://cloudflare-eth.com",
+    "https://rpc.ankr.com/eth"
+  ],
+  "smartchain": [
+    "https://rpc.ankr.com/bsc"
+  ],
+  "aptos": [
+    "https://rpc.ankr.com/http/aptos"
+  ],
+  "polygon": [
+    "https://rpc.ankr.com/polygon"
+  ],
+  "solana": [
+    "https://rpc.ankr.com/solana"
+  ],
+  "cosmos": [
+    "https://cosmos-mainnet-rpc.allthatnode.com:1317"
+  ],
+  "osmosis": [
+    "https://lcd-osmosis.blockapsis.com",
+    "https://lcd.osmosis.zone",
+    "https://osmosis.stakesystems.io"
+  ],
+  "arbitrum": [
+    "https://rpc.ankr.com/arbitrum"
+  ]
+}

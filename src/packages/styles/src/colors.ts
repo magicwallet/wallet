@@ -1,0 +1,15 @@
+export const enum Colors {
+  WHITE = '#FFFFFF',
+  BLACK = '#242424',
+  DARK_BLACK = '#141414',
+  LIGHT_BLACK = '#343434',
+  VERY_LIGHT_BLACK = '#444444',
+  GRAY = '#999999',
+  DARK_GRAY = '#767A81',
+  GREEN = '#30D399',
+  GREEN_DARK = 'hsla(159, 65%, 51%, 0.1)',
+  RED = '#F84E4E',
+  RED_DARK = 'hsla(0, 92%, 64%, 0.1)',
+  BLUE = '#415FEE',
+  BLUE_DARK = '#615FEE',
+}
