@@ -25,7 +25,7 @@ export class ChainProviderCosmos implements ChainProvider {
     });
   }
 
-  getAssets(address: string): Promise<Asset[]> {
+  getAssets(_: string): Promise<Asset[]> {
     //TODO: Implement fetching all assets.
     return Promise.resolve([new Asset(this.chain)]);
   }

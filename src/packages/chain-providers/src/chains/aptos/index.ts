@@ -17,7 +17,7 @@ export class ChainProviderAptos implements ChainProvider {
     });
   }
 
-  getAssets(address: string): Promise<Asset[]> {
+  getAssets(_: string): Promise<Asset[]> {
     return Promise.resolve([new Asset(Chain.APTOS)]);
   }
 

@@ -21,7 +21,7 @@ export function toBigNumber(number: number, decimals: number): BigInt {
   const numberString = number.toString(10);
   const location = numberString.indexOf('.');
   const diff = location > 0 ? numberString.length - location - 1 : 0;
-  if (diff > 0 && decimals == 0) {
+  if (diff > 0 && decimals === 0) {
     return BigInt(0);
   }
   const value = numberString.replace('.', '').replace(',', '');

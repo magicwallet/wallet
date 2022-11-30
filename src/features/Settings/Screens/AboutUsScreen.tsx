@@ -41,9 +41,7 @@ export const AboutUsScreen: React.FC<Props<Screen.ABOUT_US>> = ({
     {
       title: 'View Source Code',
       onPress: () => {
-        Linking.openURL('https://github.com/magicwallet/wallet').then(
-          r => r,
-        );
+        Linking.openURL('https://github.com/magicwallet/wallet').then(r => r);
       },
     },
     {

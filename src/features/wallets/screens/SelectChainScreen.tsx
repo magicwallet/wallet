@@ -2,14 +2,13 @@ import React from 'react';
 import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {Props, Screen} from '@magicwallet/navigation';
 import {Colors} from '@magicwallet/styles';
-import {Asset, ChainList} from '@magicwallet/chain-types';
+import {ChainList} from '@magicwallet/chain-types';
 import {ChainView} from '../ChainView';
 
 export const SelectChainScreen: React.FC<Props<Screen.SELECT_CHAIN>> = ({
   route,
   navigation,
 }) => {
-  const {chain} = route.params;
   const chains = ChainList;
 
   return (

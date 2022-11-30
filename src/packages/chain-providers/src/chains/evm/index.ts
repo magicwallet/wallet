@@ -26,7 +26,7 @@ export class ChainProviderEVM implements ChainProvider {
       });
   }
 
-  getAssets(address: string): Promise<Asset[]> {
+  getAssets(_: string): Promise<Asset[]> {
     return Promise.resolve([new Asset(this.chain)]);
   }
 

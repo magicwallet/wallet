@@ -36,7 +36,7 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({
   const currency = GetCurrencySelector(state);
   const [quotes, setQuotes] = useState(Array<QuoteResult>);
   const [quoteError, setQuoteError] = useState(false);
-  const [amount, onChangeAmount] = React.useState(100);
+  const [currentAmount, onChangeCurrentAmount] = React.useState(100);
   const currentWallet = GetCurrentWallet(state);
   const currentAccount = GetCurrentWalletAccount(state, {
     wallet: currentWallet,
@@ -55,7 +55,12 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({
     setQuotes([]);
     setQuoteError(false);
     quoteFetcher
-      .getQuote(currency, assetItem.asset, amount, currentAccount.address)
+      .getQuote(
+        currency,
+        assetItem.asset,
+        currentAmount,
+        currentAccount.address,
+      )
       .then(result => {
         setQuotes(result);
         console.log('quotes: ', result.length, result);
@@ -64,15 +69,15 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({
       .catch(_ => {
         setQuoteError(true);
       });
-  }, [amount]);
+  }, [currentAmount]);
 
   const buyAction = function (quote: QuoteResult) {
     const url = quote.redirectURL;
     Linking.openURL(url).then(console.log);
   };
 
-  const inputBuy = function (amount: number) {
-    onChangeAmount(amount);
+  const inputBuy = function (buyAmount: number) {
+    onChangeCurrentAmount(buyAmount);
   };
 
   const quote = quotes[0];
@@ -84,8 +89,8 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({
           <Text style={styles.input_symbol}>$</Text>
           <TextInput
             style={styles.input}
-            onChangeText={text => onChangeAmount(parseFloat(text))}
-            value={String(amount)}
+            onChangeText={text => onChangeCurrentAmount(parseFloat(text))}
+            value={String(currentAmount)}
             keyboardType="number-pad"
             autoFocus={true}
             caretHidden={true}
@@ -102,7 +107,7 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({
             [50, 100, 150],
             [250, 500, 1000],
           ]}
-          onPress={amount => inputBuy(amount)}
+          onPress={buyAmount => inputBuy(buyAmount)}
         />
         <ProviderView
           quotes={quotes}

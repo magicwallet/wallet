@@ -29,7 +29,7 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
   const currency = GetCurrencySelector(state);
   const assets = GetAssetsSelector(state, currentWallet);
   const fiatValue = GetTotalFiatValueSelector(state, currentWallet);
-  const walletService = new WalletService();
+  const walletService = new WalletService(dispatch, currentWallet);
 
   const openCoin = function (asset: Asset) {
     navigation.navigate(Screen.COIN, {
@@ -66,7 +66,7 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
     setRefreshing(true);
 
     walletService
-      .refresh(dispatch, wallet, currency)
+      .refresh(currency)
       .catch(error => {
         console.log('wallet service error: ', error);
       })

@@ -17,8 +17,8 @@ export const SelectAssetScreen: React.FC<Props<Screen.SELECT_ASSET>> = ({
   const currentWallet = GetCurrentWallet(state);
   const assets = GetAssetsSelector(state, currentWallet);
 
-  const handlePress = (type: SelectAssetType, asset: Asset) => {
-    switch (type) {
+  const handlePress = (assetType: SelectAssetType, asset: Asset) => {
+    switch (assetType) {
       case SelectAssetType.BUY:
         navigation.navigate(Screen.BUY_CRYPTO, {
           asset: asset,

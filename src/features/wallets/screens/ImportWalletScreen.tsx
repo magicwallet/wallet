@@ -15,28 +15,29 @@ export const ImportWalletScreen: React.FC<Props<Screen.IMPORT_WALLET>> = ({
 }) => {
   const [name, onChangeName] = React.useState('');
   const [value, onChangeText] = React.useState('');
-  const [chain, onChangeChain] = React.useState(Chain.BNB_CHAIN);
+  const [selectedChain, onChangeSelectedChain] = React.useState(
+    Chain.BNB_CHAIN,
+  );
 
   const dispatch = useAppDispatch();
   const state = useAppSelector(s => s.wallets.wallets);
 
   useEffect(() => {
     const walletsCount = state.filter(
-      wallet => wallet.accounts[0].chain === chain,
+      wallet => wallet.accounts[0].chain === selectedChain,
     ).length;
-    const assetResource = GetAssetResource(new Asset(chain))!;
-    const name = walletName(assetResource, walletsCount);
-    onChangeName(name);
-  }, [chain]);
+    const assetResource = GetAssetResource(new Asset(selectedChain))!;
+    onChangeName(walletName(assetResource, walletsCount));
+  }, [selectedChain]);
 
   return (
     <SafeAreaView style={styles.container}>
       <ChainView
-        chain={chain}
+        chain={selectedChain}
         onPress={() => {
           navigation.navigate(Screen.SELECT_CHAIN, {
-            chain: chain,
-            selectChain: chain => onChangeChain(chain),
+            chain: selectedChain,
+            selectChain: chain => onChangeSelectedChain(chain),
           });
         }}
       />
@@ -64,7 +65,7 @@ export const ImportWalletScreen: React.FC<Props<Screen.IMPORT_WALLET>> = ({
           style={MagicButtonStyle.normal}
           title={'Import Wallet'}
           onPress={() => {
-            dispatch(walletsAddWallet(name, chain, value)).then(_ => {
+            dispatch(walletsAddWallet(name, selectedChain, value)).then(_ => {
               navigation.navigate(Screen.WALLET);
             });
           }}
