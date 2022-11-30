@@ -1,5 +1,8 @@
 export const AssetsEndpoints = 'https://assets.magicwallet.org';
 
+export const NAME = 'magic';
+export const DISPLAY_NAME = 'Magic';
+
 // Public values
 export const MERCURYO_WIDGET_ID = 'e852c142-3718-47e7-a6fc-3fd58a87d85c'; // dev
 export const MOONPAY_API_KEY = 'pk_test_DMJznyALVVVtBnh76l7U02fabkIDfhM';
