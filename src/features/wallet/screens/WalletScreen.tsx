@@ -31,10 +31,11 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
   const fiatValue = GetTotalFiatValueSelector(state, currentWallet);
   const walletService = new WalletService(dispatch, currentWallet);
 
-  const openCoin = function (asset: Asset) {
-    navigation.navigate(Screen.COIN, {
-      asset: asset,
-    });
+  const openCoin = function (_: Asset) {
+    // TODO: Enable open coin screen once ready.
+    // navigation.navigate(Screen.COIN, {
+    //   asset: asset,
+    // });
   };
 
   const headerAction = function (action: WalletHeaderAction) {
