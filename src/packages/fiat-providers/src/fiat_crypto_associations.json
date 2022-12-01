@@ -72,7 +72,7 @@
   "solana": [
     {
       "provider": "Ramp",
-      "symbol": "MATIC_MATIC"
+      "symbol": "SOL_SOL"
     },
     {
       "provider": "MoonPay",

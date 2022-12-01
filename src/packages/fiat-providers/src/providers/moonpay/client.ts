@@ -1,5 +1,6 @@
-import {BuyQuote} from './model';
-import {QuoteRequest} from '../../model';
+import {BuyQuote, IpAddressCheck} from './model';
+import {ProviderError, QuoteRequest} from '../../model';
+import {fetchJSON} from '@magicwallet/client';
 
 // documentation: https://dashboard.moonpay.com/api_reference/client_side_api
 
@@ -12,7 +13,12 @@ export class Client {
     this.api_key = api_key;
   }
 
-  getQuote(quoteRequest: QuoteRequest): Promise<BuyQuote> {
+  async getQuote(quoteRequest: QuoteRequest): Promise<BuyQuote> {
+    const ipCheck = await this.getCheckIpAddress(quoteRequest.ipAddress);
+    if (!ipCheck.isAllowed && !ipCheck.isBuyAllowed) {
+      return Promise.reject(ProviderError.UNSUPPORTED_LOCATION);
+    }
+
     const params = new URLSearchParams({
       apiKey: this.api_key,
       baseCurrencyCode: quoteRequest.fiatCurrency.toLowerCase(),
@@ -20,15 +26,20 @@ export class Client {
       extraFeePercentage: String(1),
       areFeesIncluded: String(true),
     });
-    return fetch(
+    const url =
       `${
         this.url
       }/v3/currencies/${quoteRequest.cryptoCurrency.toLowerCase()}/buy_quote?` +
-        params,
-    )
-      .then(res => res.json())
-      .then((rate: BuyQuote) => {
-        return rate;
-      });
+      params;
+
+    return fetchJSON<BuyQuote>(url);
+  }
+
+  getCheckIpAddress(ipAddress: string) {
+    const params = new URLSearchParams({
+      apiKey: this.api_key,
+      ip: ipAddress,
+    });
+    return fetchJSON<IpAddressCheck>(`${this.url}/v3/ip_address/?` + params);
   }
 }

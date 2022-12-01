@@ -1,10 +1,16 @@
 import {ProviderName} from './fiat-provider';
 
+export enum ProviderError {
+  UNSUPPORTED_LOCATION = 'Unsupported IP Address / Location',
+  // UNSUPPORTED_ASSET = 'Unsupported asset',
+}
+
 export type QuoteRequest = {
   address: string;
   fiatCurrency: string;
   cryptoCurrency: string;
   amount: number;
+  ipAddress: string;
 };
 
 export class QuoteResult {

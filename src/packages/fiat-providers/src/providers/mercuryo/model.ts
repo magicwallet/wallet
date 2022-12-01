@@ -6,6 +6,10 @@ export class BuyRate {
   rate: string;
 }
 
+export class Country {
+  enabled: boolean;
+}
+
 export class Data<T> {
   data: T;
 }

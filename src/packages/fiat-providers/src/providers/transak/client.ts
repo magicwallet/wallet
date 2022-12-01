@@ -1,5 +1,6 @@
 import {Quote, Response} from './model';
 import {QuoteRequest} from '../../model';
+import {fetchJSON} from '@magicwallet/client';
 
 // documentation: https://docs.transak.com/
 
@@ -14,7 +15,7 @@ export class Client {
 
   getQuote(quoteRequest: QuoteRequest): Promise<Response<Quote>> {
     const params = new URLSearchParams({
-      ipAddress: '123.123.123.123',
+      ipAddress: quoteRequest.ipAddress,
       cryptoCurrency: quoteRequest.cryptoCurrency,
       fiatCurrency: quoteRequest.fiatCurrency,
       fiatAmount: String(quoteRequest.amount),
@@ -22,11 +23,6 @@ export class Client {
       isBuyOrSell: 'buy',
     });
     const url = `${this.url}/api/v2/currencies/price?`;
-
-    return fetch(url + params)
-      .then(res => res.json())
-      .then((rate: Response<Quote>) => {
-        return rate;
-      });
+    return fetchJSON<Response<Quote>>(url + params);
   }
 }

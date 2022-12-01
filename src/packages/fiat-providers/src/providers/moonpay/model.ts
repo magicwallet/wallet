@@ -5,3 +5,8 @@ export class BuyQuote {
   quoteCurrencyAmount: number;
   quoteCurrencyPrice: string;
 }
+
+export class IpAddressCheck {
+  isAllowed: boolean;
+  isBuyAllowed: boolean;
+}

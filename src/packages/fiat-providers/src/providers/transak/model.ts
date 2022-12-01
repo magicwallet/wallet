@@ -10,3 +10,12 @@ export class Quote {
   network: string;
   totalFee: number;
 }
+
+export class Asset {
+  symbol: string;
+  chain: string;
+}
+
+export class Assets {
+  assets: Asset[];
+}

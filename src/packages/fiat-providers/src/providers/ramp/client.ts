@@ -1,5 +1,7 @@
 import {GetQuote, Quote} from './model';
-import {QuoteRequest} from '../../model';
+import {ProviderError, QuoteRequest} from '../../model';
+import {Assets} from '../transak/model';
+import {fetchJSON} from '@magicwallet/client';
 
 // documentation: https://docs.ramp.network/rest-api-v3-reference
 
@@ -12,7 +14,12 @@ export class Client {
     this.api_key = api_key;
   }
 
-  getQuote(quoteRequest: QuoteRequest): Promise<Quote> {
+  async getQuote(quoteRequest: QuoteRequest): Promise<Quote> {
+    const assets = await this.getAssets(quoteRequest.ipAddress);
+    if (assets.assets.find(el => el.symbol === quoteRequest.cryptoCurrency) === undefined) {
+      return Promise.reject(ProviderError.UNSUPPORTED_LOCATION);
+    }
+
     const params: GetQuote = {
       cryptoAssetSymbol: quoteRequest.cryptoCurrency,
       fiatCurrency: quoteRequest.fiatCurrency,
@@ -20,16 +27,22 @@ export class Client {
     };
     const url = `${this.url}/api/host-api/v3/onramp/quote/all?hostApiKey=${this.api_key}`;
 
-    return fetch(url, {
+    return fetchJSON<Quote>(url, {
       method: 'POST',
       body: JSON.stringify(params),
       headers: {
         'Content-Type': 'application/json',
       },
-    })
-      .then(res => res.json())
-      .then((rate: Quote) => {
-        return rate;
-      });
+    });
+  }
+
+  getAssets(ipAddress: string) {
+    const params = new URLSearchParams({
+      omitHidden: String('true'),
+      onlyEnabled: String('true'),
+      userIp: ipAddress,
+    });
+    const url = `${this.url}/api/host-api/assets?` + params;
+    return fetchJSON<Assets>(url);
   }
 }

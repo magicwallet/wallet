@@ -1,5 +1,6 @@
-import {Data, BuyRate} from './model';
-import {QuoteRequest} from '../../model';
+import {BuyRate, Country, Data} from './model';
+import {ProviderError, QuoteRequest} from '../../model';
+import {fetchJSON} from '@magicwallet/client';
 
 // documentation: https://widget.mercuryo.io/docs.html
 
@@ -12,17 +13,29 @@ export class Client {
     this.widget_id = widget_id;
   }
 
-  getQuote(quoteRequest: QuoteRequest): Promise<Data<BuyRate>> {
+  async getQuote(quoteRequest: QuoteRequest): Promise<Data<BuyRate>> {
+    const checkIp = await this.getCheckIpAddress(quoteRequest.ipAddress);
+    if (checkIp.data.enabled === false) {
+      return Promise.reject(ProviderError.UNSUPPORTED_LOCATION);
+    }
+
     const params = new URLSearchParams({
       from: quoteRequest.fiatCurrency,
       to: quoteRequest.cryptoCurrency,
       amount: String(quoteRequest.amount),
       widget_id: this.widget_id,
     });
-    return fetch(`${this.url}/v1.6/widget/buy/rate?` + params)
-      .then(res => res.json())
-      .then((rate: Data<BuyRate>) => {
-        return rate;
-      });
+    return fetchJSON<Data<BuyRate>>(
+      `${this.url}/v1.6/widget/buy/rate?` + params,
+    );
+  }
+
+  getCheckIpAddress(ipAddress: string) {
+    const params = new URLSearchParams({
+      ip: ipAddress,
+    });
+    return fetchJSON<Data<Country>>(
+      `${this.url}/v1.6/public/data-by-ip?` + params,
+    );
   }
 }
