@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  HeaderOptions,
-  RootStack,
-  Screen,
-  SettingsStack,
-} from '@magicwallet/navigation';
+import {HeaderOptions, RootStack, Screen, SettingsStack} from '@magicwallet/navigation';
 import {
   CurrencyScreen,
   AboutUsScreen,
@@ -28,10 +23,7 @@ export const SettingsNavigator: () => React.ReactElement = () => {
           headerLeft: () =>
             Platform.OS === 'ios' ? (
               <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image
-                  style={{height: 32, width: 32}}
-                  source={require('../../../assets/images/close.png')}
-                />
+                <Image style={{height: 32, width: 32}} source={require('../../../assets/images/close.png')} />
               </TouchableOpacity>
             ) : undefined,
         })}
@@ -43,12 +35,8 @@ export const SettingsNavigator: () => React.ReactElement = () => {
           ...HeaderOptions,
           title: 'Wallets',
           headerRight: () => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate(Screen.IMPORT_WALLET)}>
-              <Image
-                style={{height: 32, width: 32}}
-                source={require('../../../assets/images/add.png')}
-              />
+            <TouchableOpacity onPress={() => navigation.navigate(Screen.IMPORT_WALLET)}>
+              <Image style={{height: 32, width: 32}} source={require('../../../assets/images/add.png')} />
             </TouchableOpacity>
           ),
         })}

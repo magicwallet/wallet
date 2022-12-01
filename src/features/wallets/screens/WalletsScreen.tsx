@@ -3,16 +3,11 @@ import {FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {Props, Screen} from '@magicwallet/navigation';
 import {Colors, DefaultStyles, MagicButtonStyle} from '@magicwallet/styles';
 import {FormListItem, MagicButton} from '@magicwallet/views';
-import {
-  walletsDeleteWallet,
-  walletsSelectWallet,
-} from '../../../core/reducers/wallets';
+import {walletsDeleteWallet, walletsSelectWallet} from '../../../core/reducers/wallets';
 import {useAppDispatch, useAppSelector} from '../../../core/hooks';
 import {getWalletsSelector} from '../index';
 
-export const WalletsScreen: React.FC<Props<Screen.WALLETS>> = ({
-  navigation,
-}) => {
+export const WalletsScreen: React.FC<Props<Screen.WALLETS>> = ({navigation}) => {
   const dispatch = useAppDispatch();
   const state = useAppSelector(s => s);
   const wallets = getWalletsSelector(state);

@@ -2,10 +2,7 @@ import React, {useEffect} from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {Props, Screen} from '@magicwallet/navigation';
 import {Colors} from '@magicwallet/styles';
-import {
-  WalletHeader,
-  WalletHeaderAction,
-} from '@magicwallet/views/src/WalletHeader';
+import {WalletHeader, WalletHeaderAction} from '@magicwallet/views/src/WalletHeader';
 import {
   GetAssetSelector,
   GetAssetTitle,
@@ -14,10 +11,7 @@ import {
 import {useAppSelector} from '../../../core/hooks';
 import {GetCurrentWallet} from '../../wallet/selector';
 
-export const CoinScreen: React.FC<Props<Screen.COIN>> = ({
-  route,
-  navigation,
-}) => {
+export const CoinScreen: React.FC<Props<Screen.COIN>> = ({route, navigation}) => {
   const {asset} = route.params;
   const state = useAppSelector(s => s);
   const currentWallet = GetCurrentWallet(state);

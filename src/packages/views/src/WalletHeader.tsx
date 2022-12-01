@@ -1,10 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {WalletHeaderButtons} from './WalletHeaderButtons';
-import {
-  WalletHeaderBalance,
-  WalletHeaderBalanceProps,
-} from './WalletHeaderBalance';
+import {WalletHeaderBalance, WalletHeaderBalanceProps} from './WalletHeaderBalance';
 
 export enum WalletHeaderAction {
   RECEIVE = 'RECEIVE',

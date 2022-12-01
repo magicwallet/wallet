@@ -10,22 +10,16 @@ import {ChainView} from '../ChainView';
 import {GetAssetResource} from '../../../assets/asset-resource';
 import {walletName} from '../wallets-selector';
 
-export const ImportWalletScreen: React.FC<Props<Screen.IMPORT_WALLET>> = ({
-  navigation,
-}) => {
+export const ImportWalletScreen: React.FC<Props<Screen.IMPORT_WALLET>> = ({navigation}) => {
   const [name, onChangeName] = React.useState('');
   const [value, onChangeText] = React.useState('');
-  const [selectedChain, onChangeSelectedChain] = React.useState(
-    Chain.BNB_CHAIN,
-  );
+  const [selectedChain, onChangeSelectedChain] = React.useState(Chain.BNB_CHAIN);
 
   const dispatch = useAppDispatch();
   const state = useAppSelector(s => s.wallets.wallets);
 
   useEffect(() => {
-    const walletsCount = state.filter(
-      wallet => wallet.accounts[0].chain === selectedChain,
-    ).length;
+    const walletsCount = state.filter(wallet => wallet.accounts[0].chain === selectedChain).length;
     const assetResource = GetAssetResource(new Asset(selectedChain))!;
     onChangeName(walletName(assetResource, walletsCount));
   }, [selectedChain]);

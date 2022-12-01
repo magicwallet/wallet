@@ -21,12 +21,7 @@ export class AssetBalanceFiat {
   fiatValue: number;
   price?: Price;
 
-  constructor(
-    asset: Asset,
-    available: BigInt,
-    fiatValue: number,
-    price?: Price,
-  ) {
+  constructor(asset: Asset, available: BigInt, fiatValue: number, price?: Price) {
     this.asset = asset;
     this.available = available;
     this.fiatValue = fiatValue;

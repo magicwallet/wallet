@@ -26,11 +26,7 @@ export class Client {
       extraFeePercentage: String(1),
       areFeesIncluded: String(true),
     });
-    const url =
-      `${
-        this.url
-      }/v3/currencies/${quoteRequest.cryptoCurrency.toLowerCase()}/buy_quote?` +
-      params;
+    const url = `${this.url}/v3/currencies/${quoteRequest.cryptoCurrency.toLowerCase()}/buy_quote?` + params;
 
     return fetchJSON<BuyQuote>(url);
   }

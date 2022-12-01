@@ -17,13 +17,11 @@ export class ChainProviderEVM implements ChainProvider {
   }
 
   async getBalances(address: string, assets: Asset[]): Promise<AssetBalance[]> {
-    return this.client
-      .call<string>(METHOD.ETH_GET_BALANCE, [address, 'latest'])
-      .then(balance => {
-        return assets.map(asset => {
-          return new AssetBalance(asset, BigInt(balance));
-        });
+    return this.client.call<string>(METHOD.ETH_GET_BALANCE, [address, 'latest']).then(balance => {
+      return assets.map(asset => {
+        return new AssetBalance(asset, BigInt(balance));
       });
+    });
   }
 
   getAssets(_: string): Promise<Asset[]> {
@@ -31,10 +29,8 @@ export class ChainProviderEVM implements ChainProvider {
   }
 
   async getLatestBlock(): Promise<number> {
-    return this.client
-      .call<string>(METHOD.ETH_BLOCK_NUMBER, ['latest'])
-      .then(block => {
-        return Promise.resolve(parseInt(block, 16));
-      });
+    return this.client.call<string>(METHOD.ETH_BLOCK_NUMBER, ['latest']).then(block => {
+      return Promise.resolve(parseInt(block, 16));
+    });
   }
 }

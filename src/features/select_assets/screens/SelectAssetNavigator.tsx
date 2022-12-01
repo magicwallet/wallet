@@ -1,15 +1,6 @@
 import * as React from 'react';
-import {
-  HeaderOptions,
-  Screen,
-  SelectAssetStack,
-  SelectAssetType,
-} from '@magicwallet/navigation';
-import {
-  BuyCryptoScreen,
-  ReceiveScreen,
-  SelectAssetScreen,
-} from '../../../core/screens';
+import {HeaderOptions, Screen, SelectAssetStack, SelectAssetType} from '@magicwallet/navigation';
+import {BuyCryptoScreen, ReceiveScreen, SelectAssetScreen} from '../../../core/screens';
 import {Image, Platform, TouchableOpacity} from 'react-native';
 
 export const SelectAssetNavigator: () => React.ReactElement = () => {
@@ -33,10 +24,7 @@ export const SelectAssetNavigator: () => React.ReactElement = () => {
           headerLeft: () =>
             Platform.OS === 'ios' ? (
               <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image
-                  style={{height: 32, width: 32}}
-                  source={require('../../../assets/images/close.png')}
-                />
+                <Image style={{height: 32, width: 32}} source={require('../../../assets/images/close.png')} />
               </TouchableOpacity>
             ) : undefined,
         })}

@@ -25,10 +25,6 @@ it('test valueChangePercentage', () => {
   expect(defaultFormatter.fiatValueChangePercentage(0)).toBe('0.00%');
   expect(defaultFormatter.fiatValueChangePercentage(0.123333)).toBe('0.12%');
 
-  expect(defaultFormatter.fiatValueChangePercentage(0.123, false)).toBe(
-    '+0.12%',
-  );
-  expect(defaultFormatter.fiatValueChangePercentage(-10, false)).toBe(
-    '-10.00%',
-  );
+  expect(defaultFormatter.fiatValueChangePercentage(0.123, false)).toBe('+0.12%');
+  expect(defaultFormatter.fiatValueChangePercentage(-10, false)).toBe('-10.00%');
 });

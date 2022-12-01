@@ -8,10 +8,7 @@ import {useAppSelector} from '../../../core/hooks';
 import {GetCurrentWallet} from '../../wallet/selector';
 import {Asset} from '@magicwallet/chain-types';
 
-export const SelectAssetScreen: React.FC<Props<Screen.SELECT_ASSET>> = ({
-  route,
-  navigation,
-}) => {
+export const SelectAssetScreen: React.FC<Props<Screen.SELECT_ASSET>> = ({route, navigation}) => {
   const {type} = route.params;
   const state = useAppSelector(s => s);
   const currentWallet = GetCurrentWallet(state);

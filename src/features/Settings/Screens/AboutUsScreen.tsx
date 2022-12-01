@@ -1,21 +1,11 @@
 import React from 'react';
-import {
-  FlatList,
-  Image,
-  Linking,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {FlatList, Image, Linking, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {Props, Screen} from '@magicwallet/navigation';
 import {Colors, DefaultStyles, FontWeight} from '@magicwallet/styles';
 import {FormListItem} from '@magicwallet/views';
 import DeviceInfo from 'react-native-device-info';
 
-export const AboutUsScreen: React.FC<Props<Screen.ABOUT_US>> = ({
-  navigation,
-}) => {
+export const AboutUsScreen: React.FC<Props<Screen.ABOUT_US>> = ({navigation}) => {
   const items: {
     title: string;
     onPress: () => void;
@@ -57,15 +47,10 @@ export const AboutUsScreen: React.FC<Props<Screen.ABOUT_US>> = ({
       <FlatList
         style={DefaultStyles.list}
         data={items}
-        renderItem={({item}) => (
-          <FormListItem title={item.title} onPress={item.onPress} />
-        )}
+        renderItem={({item}) => <FormListItem title={item.title} onPress={item.onPress} />}
         ListHeaderComponent={
           <View style={styles.header}>
-            <Image
-              style={styles.logo}
-              source={require('../../../assets/images/logo.png')}
-            />
+            <Image style={styles.logo} source={require('../../../assets/images/logo.png')} />
             <Text style={styles.name}>Magic Wallet</Text>
             <Text style={styles.version}>
               Version {DeviceInfo.getVersion()} ({DeviceInfo.getBuildNumber()})

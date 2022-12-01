@@ -3,9 +3,7 @@ import {Asset, Chain, ChainList} from '@magicwallet/chain-types';
 
 describe('test asset exist in asset resource', () => {
   test('token asset', () => {
-    expect(
-      GetAssetResource(new Asset(Chain.BNB_CHAIN, 'BTCB-1DE')),
-    ).toBeTruthy();
+    expect(GetAssetResource(new Asset(Chain.BNB_CHAIN, 'BTCB-1DE'))).toBeTruthy();
     expect(GetAssetResource(new Asset(Chain.BNB_CHAIN, 'false'))).toBeFalsy();
   });
 

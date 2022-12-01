@@ -8,10 +8,7 @@ import {
 } from '../../core/reducers/assets';
 import {Asset} from '@magicwallet/chain-types';
 import {AppDispatch} from '../../core/store';
-import {
-  AssetResourcesList,
-  GetAssetResources,
-} from '../../assets/asset-resource';
+import {AssetResourcesList, GetAssetResources} from '../../assets/asset-resource';
 import {MarketFetcher, Price} from '@magicwallet/market-provider';
 import {AssetService, BalanceService} from '@magicwallet/chain-services';
 import {Wallet} from '@magicwallet/types';
@@ -33,9 +30,7 @@ export class WalletService {
   }
 
   refresh(currency: string) {
-    const assetsResource = Object.keys(this.assetResource.assets).map(
-      key => this.assetResource.assets[key],
-    );
+    const assetsResource = Object.keys(this.assetResource.assets).map(key => this.assetResource.assets[key]);
 
     return this.dispatch(assetAddToList(assetsResource))
       .then(_ => {
@@ -66,8 +61,8 @@ export class WalletService {
   }
 
   updateFiat(prices: Price[]) {
-    return this.dispatch(
-      marketUpdateAssetFiatValue(this.wallet.id, prices),
-    ).then(_ => this.dispatch(marketUpdateTotalFiatValue(this.wallet.id)));
+    return this.dispatch(marketUpdateAssetFiatValue(this.wallet.id, prices)).then(_ =>
+      this.dispatch(marketUpdateTotalFiatValue(this.wallet.id)),
+    );
   }
 }

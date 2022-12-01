@@ -8,12 +8,7 @@ export class AssetItem {
   details: AssetDetails;
   balance: AssetBalanceFiat;
 
-  constructor(
-    asset: Asset,
-    info: AssetInfo,
-    details: AssetDetails,
-    balance: AssetBalanceFiat,
-  ) {
+  constructor(asset: Asset, info: AssetInfo, details: AssetDetails, balance: AssetBalanceFiat) {
     this.asset = asset;
     this.info = info;
     this.details = details;

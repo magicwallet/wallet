@@ -32,8 +32,5 @@ export function fromBigNumber(value: BigInt, decimals: number): number {
   const result = (value as bigint) / BigInt(10) ** BigInt(decimals);
   const result2 = (value as bigint) % BigInt(10) ** BigInt(decimals);
 
-  return (
-    parseFloat(result.toString(10)) +
-    parseFloat(result2.toString(10)) / 10 ** decimals
-  );
+  return parseFloat(result.toString(10)) + parseFloat(result2.toString(10)) / 10 ** decimals;
 }

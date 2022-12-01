@@ -29,9 +29,6 @@ export const getWalletsSelector = createSelector(
   },
 );
 
-export const walletName = (
-  assetResource: AssetResource,
-  numberOfWallets: number,
-): string => {
+export const walletName = (assetResource: AssetResource, numberOfWallets: number): string => {
   return `${assetResource.name} Wallet #${numberOfWallets + 1}`;
 };

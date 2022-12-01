@@ -18,13 +18,11 @@ export class ChainProviderSolana implements ChainProvider {
   }
 
   async getBalances(address: string, assets: Asset[]): Promise<AssetBalance[]> {
-    return this.client
-      .call<Balance>(METHOD.GET_BALANCE, [address])
-      .then(balance => {
-        return assets.map(asset => {
-          return new AssetBalance(asset, BigInt(balance.value));
-        });
+    return this.client.call<Balance>(METHOD.GET_BALANCE, [address]).then(balance => {
+      return assets.map(asset => {
+        return new AssetBalance(asset, BigInt(balance.value));
       });
+    });
   }
 
   getAssets(_: string): Promise<Asset[]> {
@@ -32,10 +30,8 @@ export class ChainProviderSolana implements ChainProvider {
   }
 
   async getLatestBlock(): Promise<number> {
-    return this.client
-      .call<LatestBlockHash>(METHOD.BLOCK_NUMBER, [])
-      .then(block => {
-        return Promise.resolve(block.lastValidBlockHeight);
-      });
+    return this.client.call<LatestBlockHash>(METHOD.BLOCK_NUMBER, []).then(block => {
+      return Promise.resolve(block.lastValidBlockHeight);
+    });
   }
 }

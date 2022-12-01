@@ -11,12 +11,7 @@ export class QuoteFetcher {
     this.providers = providers;
   }
 
-  async getQuote(
-    fiatCurrency: string,
-    asset: Asset,
-    amount: number,
-    address: string,
-  ): Promise<QuoteResult[]> {
+  async getQuote(fiatCurrency: string, asset: Asset, amount: number, address: string): Promise<QuoteResult[]> {
     const ipAddress = await this.getIPAddress();
     // TODO: Add is eligible method to check if asset and Ip address valid, then request a quote.
     // Currently doing check inside GetQuote.
@@ -35,10 +30,7 @@ export class QuoteFetcher {
                 ipAddress: ipAddress,
               })
               .catch(err => {
-                console.log(
-                  `${provider.name}, symbol: ${cryptoCurrency} error: `,
-                  err,
-                );
+                console.log(`${provider.name}, symbol: ${cryptoCurrency} error: `, err);
               });
           }
         })

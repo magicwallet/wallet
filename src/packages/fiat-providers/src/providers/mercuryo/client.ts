@@ -25,17 +25,13 @@ export class Client {
       amount: String(quoteRequest.amount),
       widget_id: this.widget_id,
     });
-    return fetchJSON<Data<BuyRate>>(
-      `${this.url}/v1.6/widget/buy/rate?` + params,
-    );
+    return fetchJSON<Data<BuyRate>>(`${this.url}/v1.6/widget/buy/rate?` + params);
   }
 
   getCheckIpAddress(ipAddress: string) {
     const params = new URLSearchParams({
       ip: ipAddress,
     });
-    return fetchJSON<Data<Country>>(
-      `${this.url}/v1.6/public/data-by-ip?` + params,
-    );
+    return fetchJSON<Data<Country>>(`${this.url}/v1.6/public/data-by-ip?` + params);
   }
 }

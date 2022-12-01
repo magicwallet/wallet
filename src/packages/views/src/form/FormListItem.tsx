@@ -1,13 +1,6 @@
 import React from 'react';
 import FastImage from 'react-native-fast-image';
-import {
-  Image,
-  ImageSourcePropType,
-  StyleSheet,
-  Text,
-  View,
-  ViewStyle,
-} from 'react-native';
+import {Image, ImageSourcePropType, StyleSheet, Text, View, ViewStyle} from 'react-native';
 import {Colors} from '@magicwallet/styles';
 import {Touchable} from '@magicwallet/core-components';
 
@@ -24,17 +17,12 @@ export class FormListItemProps {
 export class FormListItem extends React.Component<FormListItemProps> {
   render() {
     return (
-      <Touchable
-        style={{...styles.touch, ...this.props.style}}
-        onPress={this.props.onPress}>
+      <Touchable style={{...styles.touch, ...this.props.style}} onPress={this.props.onPress}>
         <View style={{...styles.container, ...this.props.style}}>
           {this.props.image ? (
             <View style={styles.image_container}>
               {this.props.imageUri ? (
-                <FastImage
-                  style={styles.image}
-                  source={{uri: this.props.imageUri}}
-                />
+                <FastImage style={styles.image} source={{uri: this.props.imageUri}} />
               ) : (
                 <Image style={styles.image} source={this.props.image} />
               )}
@@ -46,10 +34,7 @@ export class FormListItem extends React.Component<FormListItemProps> {
           </View>
           {!this.props.isChevronHidden ? (
             <View style={styles.chevron_container}>
-              <Image
-                style={styles.chevron}
-                source={require('./assets/chevron.png')}
-              />
+              <Image style={styles.chevron} source={require('./assets/chevron.png')} />
             </View>
           ) : undefined}
         </View>

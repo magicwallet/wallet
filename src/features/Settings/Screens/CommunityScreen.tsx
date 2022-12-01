@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  FlatList,
-  ImageSourcePropType,
-  Linking,
-  SafeAreaView,
-  StyleSheet,
-} from 'react-native';
+import {FlatList, ImageSourcePropType, Linking, SafeAreaView, StyleSheet} from 'react-native';
 import {Props, Screen} from '@magicwallet/navigation';
 import {Colors, DefaultStyles} from '@magicwallet/styles';
 import {FormListItem} from '@magicwallet/views';
@@ -51,13 +45,7 @@ export const CommunityScreen: React.FC<Props<Screen.COMMUNITY>> = ({}) => {
       <FlatList
         style={DefaultStyles.list}
         data={items}
-        renderItem={({item}) => (
-          <FormListItem
-            title={item.title}
-            onPress={item.onPress}
-            image={item.image}
-          />
-        )}
+        renderItem={({item}) => <FormListItem title={item.title} onPress={item.onPress} image={item.image} />}
       />
     </SafeAreaView>
   );

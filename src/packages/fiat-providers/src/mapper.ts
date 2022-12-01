@@ -2,8 +2,7 @@ import FiatCryptoAssociations from './fiat_crypto_associations.json';
 import {ProviderName} from './fiat-provider';
 import {Asset} from '@magicwallet/chain-types';
 
-const fiatCryptoAssociations: {[key: string]: MapperItem[]} =
-  FiatCryptoAssociations;
+const fiatCryptoAssociations: {[key: string]: MapperItem[]} = FiatCryptoAssociations;
 
 export class MapperItem {
   provider: string;

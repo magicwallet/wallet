@@ -1,21 +1,13 @@
 import React, {useEffect} from 'react';
 import {FlatList, RefreshControl, SafeAreaView, StyleSheet} from 'react-native';
-import {
-  Props,
-  Screen,
-  ScreenNavigator,
-  SelectAssetType,
-} from '@magicwallet/navigation';
+import {Props, Screen, ScreenNavigator, SelectAssetType} from '@magicwallet/navigation';
 import {AssetListItem, WalletHeader} from '@magicwallet/views';
 import {Asset} from '@magicwallet/chain-types';
 import {Colors} from '@magicwallet/styles';
 import {Wallet} from '@magicwallet/types';
 import {WalletHeaderAction} from '@magicwallet/views/src/WalletHeader';
 import {useAppDispatch, useAppSelector} from '../../../core/hooks';
-import {
-  GetAssetsSelector,
-  GetTotalFiatValueSelector,
-} from '../../../core/selectors/assets-selectors';
+import {GetAssetsSelector, GetTotalFiatValueSelector} from '../../../core/selectors/assets-selectors';
 import {GetCurrentWallet} from '../selector';
 import {GetCurrencySelector} from '../../Settings/selector';
 import {WalletService} from '../wallet-service';
@@ -85,19 +77,11 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={assets}
-        renderItem={({item}) => (
-          <AssetListItem asset={item} onPress={() => openCoin(item.asset)} />
-        )}
+        renderItem={({item}) => <AssetListItem asset={item} onPress={() => openCoin(item.asset)} />}
         refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={pullRefreshBalance}
-            tintColor={Colors.GRAY}
-          />
+          <RefreshControl refreshing={refreshing} onRefresh={pullRefreshBalance} tintColor={Colors.GRAY} />
         }
-        ListHeaderComponent={
-          <WalletHeader fiatValue={fiatValue} onPress={headerAction} />
-        }
+        ListHeaderComponent={<WalletHeader fiatValue={fiatValue} onPress={headerAction} />}
       />
     </SafeAreaView>
   );

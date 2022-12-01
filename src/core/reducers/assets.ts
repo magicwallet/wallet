@@ -1,17 +1,7 @@
 import {Dispatch} from 'redux';
 import {Asset, AssetBalance} from '@magicwallet/chain-types';
-import {
-  AssetResource,
-  AssetResources,
-  GetAssetResource,
-} from '../../assets/asset-resource';
-import {
-  AssetPrice,
-  FiatValue,
-  fromBigNumber,
-  Price,
-  Wallet,
-} from '@magicwallet/types';
+import {AssetResource, AssetResources, GetAssetResource} from '../../assets/asset-resource';
+import {AssetPrice, FiatValue, fromBigNumber, Price, Wallet} from '@magicwallet/types';
 
 export type AssetStore = {
   balance: string;
@@ -85,22 +75,17 @@ type AssetsStateAction =
   | AssetsUpdateAssetsFiatValue
   | AssetsUpdateTotalFiatValue;
 
-export const assetAddToList =
-  (assets: AssetResource[]) => async (dispatch: Dispatch<AssetsUpdateList>) => {
-    return dispatch({
-      type: ACTION.UPDATE_GENERIC_LIST,
-      payload: assets,
-    });
-  };
+export const assetAddToList = (assets: AssetResource[]) => async (dispatch: Dispatch<AssetsUpdateList>) => {
+  return dispatch({
+    type: ACTION.UPDATE_GENERIC_LIST,
+    payload: assets,
+  });
+};
 
 export const assetsBalancesUpdate =
-  (wallet: Wallet, balances: AssetBalance[]) =>
-  async (dispatch: Dispatch<AssetsUpdate>) => {
+  (wallet: Wallet, balances: AssetBalance[]) => async (dispatch: Dispatch<AssetsUpdate>) => {
     const balancesMap: BalancesMap = Object.fromEntries(
-      balances.map(balance => [
-        balance.asset.getId(),
-        balance.available.toString(10),
-      ]),
+      balances.map(balance => [balance.asset.getId(), balance.available.toString(10)]),
     );
 
     return dispatch({
@@ -121,17 +106,15 @@ export const mapPricesToMap = (prices: AssetPrice[]): AssetsPriceMap => {
   return pricesMap;
 };
 
-export const marketUpdatePrices =
-  (prices: AssetPrice[]) => async (dispatch: Dispatch<AssetsUpdatePrices>) => {
-    return dispatch({
-      type: ACTION.UPDATE_PRICES,
-      payload: mapPricesToMap(prices),
-    });
-  };
+export const marketUpdatePrices = (prices: AssetPrice[]) => async (dispatch: Dispatch<AssetsUpdatePrices>) => {
+  return dispatch({
+    type: ACTION.UPDATE_PRICES,
+    payload: mapPricesToMap(prices),
+  });
+};
 
 export const marketUpdateAssetFiatValue =
-  (wallet_id: string, prices: AssetPrice[]) =>
-  async (dispatch: Dispatch<AssetsUpdateAssetsFiatValue>) => {
+  (wallet_id: string, prices: AssetPrice[]) => async (dispatch: Dispatch<AssetsUpdateAssetsFiatValue>) => {
     return dispatch({
       type: ACTION.UPDATE_ASSETS_FIAT_VALUE,
       payload: {wallet_id, prices: mapPricesToMap(prices)},
@@ -139,8 +122,7 @@ export const marketUpdateAssetFiatValue =
   };
 
 export const marketUpdateTotalFiatValue =
-  (wallet_id: string) =>
-  async (dispatch: Dispatch<AssetsUpdateTotalFiatValue>) => {
+  (wallet_id: string) => async (dispatch: Dispatch<AssetsUpdateTotalFiatValue>) => {
     return dispatch({
       type: ACTION.UPDATE_ASSETS_TOTAL_FIAT_VALUE,
       payload: {wallet_id},
@@ -206,10 +188,7 @@ export default (state = INITIAL_STATE, action: AssetsStateAction) => {
         if (asset === undefined || assetResource === undefined) {
           return;
         }
-        const balance = fromBigNumber(
-          BigInt(asset.balance),
-          assetResource.decimals,
-        );
+        const balance = fromBigNumber(BigInt(asset.balance), assetResource.decimals);
         asset.fiat_value = price.price * balance;
         walletAssets.assets[assetId] = asset;
       });

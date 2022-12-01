@@ -17,9 +17,7 @@ export class WalletHeaderBalance extends React.Component<WalletHeaderBalanceProp
 
     return (
       <View style={styles.container}>
-        <Text style={styles.balance}>
-          {this.formatter.fiatValue(this.props.value)}
-        </Text>
+        <Text style={styles.balance}>{this.formatter.fiatValue(this.props.value)}</Text>
         <View
           style={{
             ...styles.balance_change,
@@ -33,9 +31,7 @@ export class WalletHeaderBalance extends React.Component<WalletHeaderBalanceProp
           </Text>
           <View
             style={{
-              backgroundColor: positiveChange
-                ? Colors.GREEN_DARK
-                : Colors.RED_DARK,
+              backgroundColor: positiveChange ? Colors.GREEN_DARK : Colors.RED_DARK,
               ...styles.balance_change_percent,
             }}>
             <Text
@@ -43,9 +39,7 @@ export class WalletHeaderBalance extends React.Component<WalletHeaderBalanceProp
                 ...styles.balance_change_percent_text,
                 color: positiveChange ? Colors.GREEN : Colors.RED,
               }}>
-              {this.formatter.fiatValueChangePercentage(
-                this.props.value_change_percentage,
-              )}
+              {this.formatter.fiatValueChangePercentage(this.props.value_change_percentage)}
             </Text>
           </View>
         </View>

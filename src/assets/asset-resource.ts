@@ -17,9 +17,7 @@ export type AssetResource = {
 
 export function GetAssetResource(asset: Asset): AssetResource | undefined {
   if (asset.getType() === AssetType.NATIVE) {
-    return require('./chains/coins.json').assets[
-      asset.getId()
-    ] as AssetResource;
+    return require('./chains/coins.json').assets[asset.getId()] as AssetResource;
   }
   return GetAssetResources(asset.chain).assets[asset.getId()];
 }

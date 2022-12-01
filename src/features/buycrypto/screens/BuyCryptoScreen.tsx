@@ -1,35 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Linking,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import {Linking, SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
 import {Props, Screen} from '@magicwallet/navigation';
 import {Colors, FontWeight, MagicButtonStyle} from '@magicwallet/styles';
-import {
-  FiatProvidersFactory,
-  QuoteFetcher,
-  QuoteResult,
-} from '@magicwallet/fiat-providers';
+import {FiatProvidersFactory, QuoteFetcher, QuoteResult} from '@magicwallet/fiat-providers';
 import {MagicButton} from '@magicwallet/views';
 import {GetCurrencySelector} from '../../Settings/selector';
 import {useAppSelector} from '../../../core/hooks';
 import {GetCurrentWallet, GetCurrentWalletAccount} from '../../wallet/selector';
-import {
-  GetAssetSelector,
-  GetAssetTitle,
-} from '../../../core/selectors/assets-selectors';
+import {GetAssetSelector, GetAssetTitle} from '../../../core/selectors/assets-selectors';
 import {BuyButtons} from '../BuyButtons';
 import {ProviderView} from '../ProviderView';
 import {round} from '@magicwallet/types';
 
-export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({
-  route,
-  navigation,
-}) => {
+export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({route, navigation}) => {
   const {asset} = route.params;
   const state = useAppSelector(s => s);
   const quoteFetcher = new QuoteFetcher(FiatProvidersFactory.new());
@@ -55,12 +38,7 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({
     setQuotes([]);
     setQuoteError(false);
     quoteFetcher
-      .getQuote(
-        currency,
-        assetItem.asset,
-        currentAmount,
-        currentAccount.address,
-      )
+      .getQuote(currency, assetItem.asset, currentAmount, currentAccount.address)
       .then(result => {
         setQuotes(result);
         console.log('quotes: ', result.length, result);
@@ -98,9 +76,7 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({
           />
         </View>
         <Text style={styles.output}>
-          {quote
-            ? `${round(quote.quote.cryptoAmount, 4)} ${assetItem.info.symbol}`
-            : ' '}
+          {quote ? `${round(quote.quote.cryptoAmount, 4)} ${assetItem.info.symbol}` : ' '}
         </Text>
         <BuyButtons
           amounts={[
@@ -109,11 +85,7 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({
           ]}
           onPress={buyAmount => inputBuy(buyAmount)}
         />
-        <ProviderView
-          quotes={quotes}
-          quoteError={quoteError}
-          assetItem={assetItem}
-        />
+        <ProviderView quotes={quotes} quoteError={quoteError} assetItem={assetItem} />
       </View>
       <View
         style={{

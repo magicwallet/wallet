@@ -4,10 +4,7 @@ import {Chain} from '@magicwallet/chain-types';
 import {Wallet} from '@magicwallet/types';
 
 //const getWallets = (state: AppState) => state.wallets || {};
-const getWalletAccount = (
-  state: AppState,
-  value: {wallet: Wallet; chain: Chain},
-) => {
+const getWalletAccount = (state: AppState, value: {wallet: Wallet; chain: Chain}) => {
   return value;
 };
 
@@ -18,11 +15,6 @@ export const GetCurrentWallet = createSelector(
   },
 );
 
-export const GetCurrentWalletAccount = createSelector(
-  getWalletAccount,
-  value => {
-    return value.wallet.accounts.find(
-      account => account.chain === value.chain,
-    )!;
-  },
-);
+export const GetCurrentWalletAccount = createSelector(getWalletAccount, value => {
+  return value.wallet.accounts.find(account => account.chain === value.chain)!;
+});

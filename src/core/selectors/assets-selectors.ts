@@ -9,8 +9,7 @@ import {AssetBalanceFiat} from '@magicwallet/chain-types/src/asset-balance';
 const getAssetsListMap = (state: AppState) => state.assets.generic_list || {};
 const getAssetsWalletMap = (state: AppState) => state.assets.wallets || {};
 const getPrices = (state: AppState) => state.assets.prices || {};
-const getAssetsForWalletMap = (state: AppState, wallet: Wallet) =>
-  state.assets.wallets[wallet.id] || {};
+const getAssetsForWalletMap = (state: AppState, wallet: Wallet) => state.assets.wallets[wallet.id] || {};
 const getAssetForWallet = (_: any, id: {wallet: Wallet; asset: Asset}) => id;
 
 export const GetAssetSelector = createSelector(
@@ -26,27 +25,19 @@ export const GetAssetSelector = createSelector(
     return GetAssetItem(
       asset,
       assetResource,
-      new AssetBalanceFiat(
-        asset,
-        BigInt(assetBalance.balance),
-        assetBalance.fiat_value,
-        price,
-      ),
+      new AssetBalanceFiat(asset, BigInt(assetBalance.balance), assetBalance.fiat_value, price),
     );
   },
 );
 
-export const GetTotalFiatValueSelector = createSelector(
-  getAssetsForWalletMap,
-  assets => {
-    const fiatValue = assets.fiat_value || {
-      value: 0,
-      value_change: 0,
-      value_change_percentage: 0,
-    };
-    return fiatValue;
-  },
-);
+export const GetTotalFiatValueSelector = createSelector(getAssetsForWalletMap, assets => {
+  const fiatValue = assets.fiat_value || {
+    value: 0,
+    value_change: 0,
+    value_change_percentage: 0,
+  };
+  return fiatValue;
+});
 
 export const GetAssetTotalFiatValueSelector = createSelector(
   getAssetsWalletMap,
@@ -83,30 +74,17 @@ export const GetAssetsSelector = createSelector(
         return GetAssetItem(
           asset,
           assetResource,
-          new AssetBalanceFiat(
-            asset,
-            BigInt(assetBalance.balance),
-            assetBalance.fiat_value,
-            price,
-          ),
+          new AssetBalanceFiat(asset, BigInt(assetBalance.balance), assetBalance.fiat_value, price),
         );
       })
       .sort((a, b) => b.balance.fiatValue - a.balance.fiatValue);
   },
 );
 
-const GetAssetItem = (
-  asset: Asset,
-  assetResource: AssetResource,
-  balance: AssetBalanceFiat,
-): AssetItem => {
+const GetAssetItem = (asset: Asset, assetResource: AssetResource, balance: AssetBalanceFiat): AssetItem => {
   return new AssetItem(
     asset,
-    new AssetInfo(
-      assetResource.name,
-      assetResource.symbol,
-      assetResource.decimals,
-    ),
+    new AssetInfo(assetResource.name, assetResource.symbol, assetResource.decimals),
     new AssetDetails(assetResource.info.is_buy_available),
     balance,
   );

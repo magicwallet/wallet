@@ -7,9 +7,7 @@ import {CurrencyList} from '@magicwallet/types';
 import {settingsChangeCurrency} from '../../../core/reducers/settings';
 import {useAppDispatch} from '../../../core/hooks';
 
-export const CurrencyScreen: React.FC<Props<Screen.CURRENCY>> = ({
-  navigation,
-}) => {
+export const CurrencyScreen: React.FC<Props<Screen.CURRENCY>> = ({navigation}) => {
   const items = CurrencyList;
   const dispatch = useAppDispatch();
 

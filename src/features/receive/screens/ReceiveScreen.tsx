@@ -6,17 +6,11 @@ import QRCode from 'react-native-qrcode-svg';
 import {MagicButton, Touchable} from '@magicwallet/core-components';
 import Clipboard from '@react-native-clipboard/clipboard';
 import {useAppSelector} from '../../../core/hooks';
-import {
-  GetAssetSelector,
-  GetAssetTitle,
-} from '../../../core/selectors/assets-selectors';
+import {GetAssetSelector, GetAssetTitle} from '../../../core/selectors/assets-selectors';
 import {GetCurrentWallet, GetCurrentWalletAccount} from '../../wallet/selector';
 import {AssetTypeList} from '@magicwallet/chain-types';
 
-export const ReceiveScreen: React.FC<Props<Screen.RECEIVE>> = ({
-  navigation,
-  route,
-}) => {
+export const ReceiveScreen: React.FC<Props<Screen.RECEIVE>> = ({navigation, route}) => {
   const state = useAppSelector(s => s);
   const currentWallet = GetCurrentWallet(state);
   const currentAccount = GetCurrentWalletAccount(state, {
@@ -45,10 +39,7 @@ export const ReceiveScreen: React.FC<Props<Screen.RECEIVE>> = ({
           <QRCode value={currentAccount.address} size={200} />
         </View>
         <View style={styles.address_container}>
-          <Text
-            numberOfLines={1}
-            style={styles.address_text}
-            ellipsizeMode={'middle'}>
+          <Text numberOfLines={1} style={styles.address_text} ellipsizeMode={'middle'}>
             {currentAccount.address}
           </Text>
           <Touchable
@@ -61,8 +52,7 @@ export const ReceiveScreen: React.FC<Props<Screen.RECEIVE>> = ({
         </View>
         <Text style={styles.info_text}>
           This address can only be used to receive compatible tokens on{' '}
-          {AssetTypeList.types(asset.asset.chain).join(',')} {asset.info.name}{' '}
-          network.
+          {AssetTypeList.types(asset.asset.chain).join(',')} {asset.info.name} network.
         </Text>
       </View>
 

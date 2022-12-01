@@ -19,13 +19,8 @@ export class ChainView extends React.Component<ChainViewProps> {
     return (
       <Touchable style={styles.touch} onPress={this.props.onPress}>
         <View style={styles.container}>
-          <FastImage
-            style={styles.logo}
-            source={{uri: this.imageFormatter.urlForChain(this.props.chain)}}
-          />
-          <Text style={styles.title}>
-            {GetAssetResource(new Asset(this.props.chain))?.name}
-          </Text>
+          <FastImage style={styles.logo} source={{uri: this.imageFormatter.urlForChain(this.props.chain)}} />
+          <Text style={styles.title}>{GetAssetResource(new Asset(this.props.chain))?.name}</Text>
         </View>
       </Touchable>
     );

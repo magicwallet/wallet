@@ -22,12 +22,7 @@ export class Client {
       .then(res => res.json())
       .then((tickers: Tickers) => {
         return tickers.tickers.map(
-          ticker =>
-            new Price(
-              TWAsset.toAsset(TWAsset.fromId(ticker.id)),
-              ticker.change_24h,
-              ticker.price,
-            ),
+          ticker => new Price(TWAsset.toAsset(TWAsset.fromId(ticker.id)), ticker.change_24h, ticker.price),
         );
       });
   }

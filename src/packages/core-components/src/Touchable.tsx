@@ -1,9 +1,4 @@
-import {
-  TouchableNativeFeedback,
-  Platform,
-  TouchableHighlight,
-  View,
-} from 'react-native';
+import {TouchableNativeFeedback, Platform, TouchableHighlight, View} from 'react-native';
 import React from 'react';
 
 export const Touchable = (props: any) => {
@@ -11,17 +6,12 @@ export const Touchable = (props: any) => {
     case 'android':
       return (
         <TouchableNativeFeedback useForeground onPress={props.onPress}>
-          <View style={{...props.style, overflow: 'hidden'}}>
-            {props.children}
-          </View>
+          <View style={{...props.style, overflow: 'hidden'}}>{props.children}</View>
         </TouchableNativeFeedback>
       );
     default:
       return (
-        <TouchableHighlight
-          style={props.style}
-          onPress={props.onPress}
-          underlayColor={props.underlayColor}>
+        <TouchableHighlight style={props.style} onPress={props.onPress} underlayColor={props.underlayColor}>
           {props.children}
         </TouchableHighlight>
       );

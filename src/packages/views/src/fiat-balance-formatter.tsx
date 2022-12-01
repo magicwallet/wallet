@@ -26,10 +26,7 @@ export class FiatBalanceFormatter {
     return `-${this.formatter.format(Math.abs(number))}`;
   }
 
-  public fiatValueChangePercentage(
-    number: number,
-    excludeSign: boolean = true,
-  ): string {
+  public fiatValueChangePercentage(number: number, excludeSign: boolean = true): string {
     if (!excludeSign) {
       const sign = number >= 0 ? '+' : '';
       return `${sign}${this.percentFormatter.format(number)}%`;

@@ -28,8 +28,7 @@ export class ChainProviderBNBChain implements ChainProvider {
           return assets.flatMap(asset => {
             if (
               asset.token_id === balance.symbol ||
-              (asset.getType() === AssetType.NATIVE &&
-                balance.symbol === BNB_SYMBOL)
+              (asset.getType() === AssetType.NATIVE && balance.symbol === BNB_SYMBOL)
             ) {
               const freeBalance = parseFloat(balance.free.replace('.', ''));
               return new AssetBalance(asset, toBigNumber(freeBalance, 0));
@@ -46,9 +45,7 @@ export class ChainProviderBNBChain implements ChainProvider {
     return this.client.getAccount(address).then(account => {
       return [
         new Asset(this.chain),
-        ...account.balances.map(balance =>
-          this.normalizeSymbol(new Asset(this.chain, balance.symbol)),
-        ),
+        ...account.balances.map(balance => this.normalizeSymbol(new Asset(this.chain, balance.symbol))),
       ];
     });
   }

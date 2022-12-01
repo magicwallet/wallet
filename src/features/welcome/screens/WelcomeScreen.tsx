@@ -4,20 +4,13 @@ import {Props, Screen} from '@magicwallet/navigation';
 import {Colors, FontWeight, MagicButtonStyle} from '@magicwallet/styles';
 import {MagicButton} from '@magicwallet/core-components/src/MagicButton';
 
-export const WelcomeScreen: React.FC<Props<Screen.WELCOME>> = ({
-  navigation,
-}) => {
+export const WelcomeScreen: React.FC<Props<Screen.WELCOME>> = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Image
-          style={styles.headerImage}
-          source={require('../../../assets/images/logo.png')}
-        />
+        <Image style={styles.headerImage} source={require('../../../assets/images/logo.png')} />
         <Text style={styles.headerTitle}>Magic Wallet</Text>
-        <Text style={styles.headerDescription}>
-          Experience the magic of DeFi & NTFs
-        </Text>
+        <Text style={styles.headerDescription}>Experience the magic of DeFi & NTFs</Text>
       </View>
       <View style={styles.footer}>
         <MagicButton

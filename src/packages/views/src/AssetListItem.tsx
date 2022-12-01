@@ -30,9 +30,7 @@ export class AssetListItem extends React.Component<AssetListItemProps> {
                 {asset.info.name}
               </Text>
               <View style={styles.price_container}>
-                <Text style={styles.price_value}>
-                  {this.fiatFormatter.fiatValue(price)}
-                </Text>
+                <Text style={styles.price_value}>{this.fiatFormatter.fiatValue(price)}</Text>
                 <Text
                   style={{
                     ...styles.price_change,
@@ -45,9 +43,7 @@ export class AssetListItem extends React.Component<AssetListItemProps> {
           </View>
           <View style={styles.right}>
             <Text style={styles.balance}>
-              {format(
-                fromBigNumber(asset.balance.available, asset.info.decimals),
-              )}
+              {format(fromBigNumber(asset.balance.available, asset.info.decimals))}
               <Text numberOfLines={1} style={styles.symbol}>
                 {' '}
                 {asset.info.symbol}

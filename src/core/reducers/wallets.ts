@@ -53,14 +53,10 @@ interface WalletsStateSelectWallet {
   payload: Wallet;
 }
 
-type WalletsStateUpdateAction =
-  | WalletsStateAddAWallet
-  | WalletsStateDeleteWallet
-  | WalletsStateSelectWallet;
+type WalletsStateUpdateAction = WalletsStateAddAWallet | WalletsStateDeleteWallet | WalletsStateSelectWallet;
 
 export const walletsAddWallet =
-  (name: string, chain: Chain, address: string) =>
-  async (dispatch: Dispatch<WalletsStateAddAWallet>) => {
+  (name: string, chain: Chain, address: string) => async (dispatch: Dispatch<WalletsStateAddAWallet>) => {
     return dispatch({
       type: ACTION.ADD_WALLET,
       payload: {
@@ -71,21 +67,19 @@ export const walletsAddWallet =
     });
   };
 
-export const walletsDeleteWallet =
-  (wallet: Wallet) => async (dispatch: Dispatch<WalletsStateDeleteWallet>) => {
-    return dispatch({
-      type: ACTION.DELETE_WALLET,
-      payload: wallet,
-    });
-  };
+export const walletsDeleteWallet = (wallet: Wallet) => async (dispatch: Dispatch<WalletsStateDeleteWallet>) => {
+  return dispatch({
+    type: ACTION.DELETE_WALLET,
+    payload: wallet,
+  });
+};
 
-export const walletsSelectWallet =
-  (wallet: Wallet) => async (dispatch: Dispatch<WalletsStateSelectWallet>) => {
-    return dispatch({
-      type: ACTION.SELECT_WALLET,
-      payload: wallet,
-    });
-  };
+export const walletsSelectWallet = (wallet: Wallet) => async (dispatch: Dispatch<WalletsStateSelectWallet>) => {
+  return dispatch({
+    type: ACTION.SELECT_WALLET,
+    payload: wallet,
+  });
+};
 
 export default (state = INITIAL_STATE, action: WalletsStateUpdateAction) => {
   switch (action.type) {

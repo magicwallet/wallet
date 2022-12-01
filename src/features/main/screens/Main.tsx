@@ -1,13 +1,6 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {
-  HeaderOptions,
-  RootStack,
-  Screen,
-  ScreenNavigator,
-  SettingsStack,
-  Theme,
-} from '@magicwallet/navigation';
+import {HeaderOptions, RootStack, Screen, ScreenNavigator, SettingsStack, Theme} from '@magicwallet/navigation';
 import {Image, Platform, TouchableOpacity} from 'react-native';
 import {
   BuyCryptoScreen,
@@ -51,10 +44,7 @@ export const Main: () => React.ReactElement = () => {
                   ...HeaderOptions,
                   title: 'Wallet',
                   headerLeft: () => (
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate(ScreenNavigator.SETTINGS)
-                      }>
+                    <TouchableOpacity onPress={() => navigation.navigate(ScreenNavigator.SETTINGS)}>
                       <Image
                         style={{height: 32, width: 32, marginRight: 10}}
                         source={require('../../../assets/images/more.png')}
@@ -93,10 +83,7 @@ export const Main: () => React.ReactElement = () => {
                   headerLeft: () =>
                     Platform.OS === 'ios' ? (
                       <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Image
-                          style={{height: 32, width: 32}}
-                          source={require('../../../assets/images/close.png')}
-                        />
+                        <Image style={{height: 32, width: 32}} source={require('../../../assets/images/close.png')} />
                       </TouchableOpacity>
                     ) : undefined,
                 })}
@@ -111,10 +98,7 @@ export const Main: () => React.ReactElement = () => {
                   headerLeft: () =>
                     Platform.OS === 'ios' ? (
                       <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Image
-                          style={{height: 32, width: 32}}
-                          source={require('../../../assets/images/close.png')}
-                        />
+                        <Image style={{height: 32, width: 32}} source={require('../../../assets/images/close.png')} />
                       </TouchableOpacity>
                     ) : undefined,
                 })}
@@ -136,8 +120,7 @@ export const Main: () => React.ReactElement = () => {
             component={CoinScreen}
             options={({route}) => ({
               ...HeaderOptions,
-              title:
-                route.params.asset.chain + ': ' + route.params.asset.token_id,
+              title: route.params.asset.chain + ': ' + route.params.asset.token_id,
             })}
           />
           <SettingsStack.Screen

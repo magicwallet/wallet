@@ -6,9 +6,7 @@ import {FormListItem} from '@magicwallet/views';
 import {useAppSelector} from '../../../core/hooks';
 import {GetCurrentWallet} from '../../wallet/selector';
 
-export const SettingsScreen: React.FC<Props<Screen.SETTINGS>> = ({
-  navigation,
-}) => {
+export const SettingsScreen: React.FC<Props<Screen.SETTINGS>> = ({navigation}) => {
   const state = useAppSelector(s => s);
   //const currency = GetCurrencySelector(state);
   const currentWallet = GetCurrentWallet(state);
@@ -45,13 +43,7 @@ export const SettingsScreen: React.FC<Props<Screen.SETTINGS>> = ({
       <FlatList
         style={DefaultStyles.list}
         data={items}
-        renderItem={({item}) => (
-          <FormListItem
-            title={item.title}
-            subtitle={item.subtitle}
-            onPress={item.onPress}
-          />
-        )}
+        renderItem={({item}) => <FormListItem title={item.title} subtitle={item.subtitle} onPress={item.onPress} />}
       />
     </SafeAreaView>
   );

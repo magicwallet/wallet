@@ -5,10 +5,7 @@ import {Colors} from '@magicwallet/styles';
 import {ChainList} from '@magicwallet/chain-types';
 import {ChainView} from '../ChainView';
 
-export const SelectChainScreen: React.FC<Props<Screen.SELECT_CHAIN>> = ({
-  route,
-  navigation,
-}) => {
+export const SelectChainScreen: React.FC<Props<Screen.SELECT_CHAIN>> = ({route, navigation}) => {
   const chains = ChainList;
 
   return (

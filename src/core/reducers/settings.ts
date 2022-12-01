@@ -24,13 +24,12 @@ interface SettingsChangeCurrency {
 
 type SettingsStateAction = SettingsChangeCurrency;
 
-export const settingsChangeCurrency =
-  (currency: string) => async (dispatch: Dispatch<SettingsChangeCurrency>) => {
-    return dispatch({
-      type: ACTION.CHANGE_CURRENCY,
-      payload: currency,
-    });
-  };
+export const settingsChangeCurrency = (currency: string) => async (dispatch: Dispatch<SettingsChangeCurrency>) => {
+  return dispatch({
+    type: ACTION.CHANGE_CURRENCY,
+    payload: currency,
+  });
+};
 
 export default (state = INITIAL_STATE, action: SettingsStateAction) => {
   switch (action.type) {
