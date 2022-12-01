@@ -40,6 +40,16 @@
       "info": {
         "is_buy_available": false
       }
+    },
+    "binance_BUSD-BD1": {
+      "asset": "binance_BUSD-BD1",
+      "name": "BUSD",
+      "symbol": "BUSD",
+      "decimals": 8,
+      "type": "BEP2",
+      "info": {
+        "is_buy_available": false
+      }
     }
   }
 }

@@ -8,7 +8,10 @@ import {
 } from '../../core/reducers/assets';
 import {Asset} from '@magicwallet/chain-types';
 import {AppDispatch} from '../../core/store';
-import {GetAssetResources} from '../../assets/asset-resource';
+import {
+  AssetResourcesList,
+  GetAssetResources,
+} from '../../assets/asset-resource';
 import {MarketFetcher, Price} from '@magicwallet/market-provider';
 import {AssetService, BalanceService} from '@magicwallet/chain-services';
 import {Wallet} from '@magicwallet/types';
@@ -17,7 +20,7 @@ export class WalletService {
   dispatch: AppDispatch;
   wallet: Wallet;
 
-  assetResources = GetAssetResources();
+  assetResource: AssetResourcesList;
   marketProvider = new MarketFetcher();
   assetService = new AssetService();
   balanceService = new BalanceService();
@@ -25,10 +28,16 @@ export class WalletService {
   constructor(dispatch: AppDispatch, wallet: Wallet) {
     this.dispatch = dispatch;
     this.wallet = wallet;
+    // TODO: Enable to support multiple chains once supported
+    this.assetResource = GetAssetResources(wallet.accounts[0].chain);
   }
 
   refresh(currency: string) {
-    return this.dispatch(assetAddToList(this.assetResources))
+    const assets = Object.keys(this.assetResource.assets).map(
+      key => this.assetResource.assets[key],
+    );
+
+    return this.dispatch(assetAddToList(assets))
       .then(_ => {
         return this.assetService.getAssets(this.wallet.accounts);
       })
