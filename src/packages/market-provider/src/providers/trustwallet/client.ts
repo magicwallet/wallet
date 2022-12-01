@@ -1,5 +1,5 @@
 import {Tickers} from './model';
-import {Price} from '@magicwallet/market-provider';
+import {Price} from './../../model';
 import {TWAsset} from './TWAsset';
 
 export class Client {

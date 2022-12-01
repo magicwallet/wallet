@@ -1,6 +1,6 @@
 import {MarketProvider} from '../../provider';
 import {Asset} from '@magicwallet/chain-types';
-import {Prices} from '@magicwallet/market-provider';
+import {Prices} from './../../model';
 import {Client} from './client';
 import {TWAsset} from './TWAsset';
 
