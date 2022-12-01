@@ -33,11 +33,11 @@ export class WalletService {
   }
 
   refresh(currency: string) {
-    const assets = Object.keys(this.assetResource.assets).map(
+    const assetsResource = Object.keys(this.assetResource.assets).map(
       key => this.assetResource.assets[key],
     );
 
-    return this.dispatch(assetAddToList(assets))
+    return this.dispatch(assetAddToList(assetsResource))
       .then(_ => {
         return this.assetService.getAssets(this.wallet.accounts);
       })
