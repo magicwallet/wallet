@@ -16,7 +16,7 @@ target 'magic' do
     :path => config[:reactNativePath],
     :production => production,
     :hermes_enabled => true,
-    :fabric_enabled => false,
+    :fabric_enabled => true,
     #:flipper_configuration => FlipperConfiguration.enabled(["Debug"]),
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
