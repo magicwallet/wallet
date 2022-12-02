@@ -20,8 +20,7 @@ module.exports = {
           {
             name: 'react-redux',
             importNames: ['useSelector', 'useDispatch'],
-            message:
-              'Use typed hooks `useAppDispatch` and `useAppSelector` instead.',
+            message: 'Use typed hooks `useAppDispatch` and `useAppSelector` instead.',
           },
         ],
       },

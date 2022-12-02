@@ -20,6 +20,7 @@ export class AssetListItem extends React.Component<AssetListItemProps> {
     const asset = this.props.asset;
     const price = asset.balance.price?.price || 0;
     const priceChange = asset.balance.price?.change_24h || 0;
+    const isPriceAvailable = price !== 0;
     return (
       <Touchable style={styles.touch} onPress={this.props.onPress}>
         <View style={styles.container}>
@@ -29,16 +30,20 @@ export class AssetListItem extends React.Component<AssetListItemProps> {
               <Text numberOfLines={1} style={styles.title}>
                 {asset.info.name}
               </Text>
-              <View style={styles.price_container}>
-                <Text style={styles.price_value}>{this.fiatFormatter.fiatValue(price)}</Text>
-                <Text
-                  style={{
-                    ...styles.price_change,
-                    color: priceChange >= 0 ? Colors.GREEN : Colors.RED,
-                  }}>
-                  {this.fiatFormatter.fiatValueChangePercentage(priceChange)}
-                </Text>
-              </View>
+              {isPriceAvailable ? (
+                <View style={styles.price_container}>
+                  <Text style={styles.price_value}>{this.fiatFormatter.fiatValue(price)}</Text>
+                  <Text
+                    style={{
+                      ...styles.price_change,
+                      color: priceChange >= 0 ? Colors.GREEN : Colors.RED,
+                    }}>
+                    {this.fiatFormatter.fiatValueChangePercentage(priceChange)}
+                  </Text>
+                </View>
+              ) : (
+                <View />
+              )}
             </View>
           </View>
           <View style={styles.right}>

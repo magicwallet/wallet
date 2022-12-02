@@ -76,7 +76,9 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
       <FlatList
         data={assets}
         renderItem={({item}) => <AssetListItem asset={item} onPress={() => openCoin(item.asset)} />}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={pullRefreshBalance} tintColor={Colors.GRAY} />}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={pullRefreshBalance} tintColor={Colors.GRAY} />
+        }
         ListHeaderComponent={<WalletHeader fiatValue={fiatValue} onPress={headerAction} />}
       />
     </SafeAreaView>
