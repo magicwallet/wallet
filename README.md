@@ -16,6 +16,11 @@
 
 - 👨‍👩‍👧‍👦 **Open Source & Community Owned** with web3 ethos.
 - 🔑 **Secure** and **Privacy** preserving wallet.
+- 📱 **Cross Platform** build with React Native (TypeScript) for iOS and Android.
+
+<img src="https://assets.magicwallet.org/screenshots/wallet.png" alt="" width="250" height="540" /> 
+<img src="https://assets.magicwallet.org/screenshots/buy.png" alt="" width="250" height="540" />
+<img src="https://assets.magicwallet.org/screenshots/collectibles.png" alt="" width="250" height="540" />
 
 ## 🏄‍♂️ Contributing
 
