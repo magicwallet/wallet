@@ -4,7 +4,7 @@ import {Props, Screen} from '@magicwallet/navigation';
 import {Colors, FontWeight, MagicButtonStyle} from '@magicwallet/styles';
 import {FiatProvidersFactory, QuoteFetcher, QuoteResult} from '@magicwallet/fiat-providers';
 import {MagicButton} from '@magicwallet/views';
-import {GetCurrencySelector} from '../../Settings/selector';
+import {GetCurrencySelector} from '../../../core/selectors/settings-selectors';
 import {useAppSelector} from '../../../core/hooks';
 import {GetCurrentWallet, GetCurrentWalletAccount} from '../../wallet/selector';
 import {GetAssetSelector, GetAssetTitle} from '../../../core/selectors/assets-selectors';
@@ -75,9 +75,7 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({route, navi
             editable={false}
           />
         </View>
-        <Text style={styles.output}>
-          {quote ? `${round(quote.quote.cryptoAmount, 4)} ${assetItem.info.symbol}` : ' '}
-        </Text>
+        <Text style={styles.output}>{quote ? `${round(quote.quote.cryptoAmount, 4)} ${assetItem.info.symbol}` : ' '}</Text>
         <BuyButtons
           amounts={[
             [50, 100, 150],
@@ -93,11 +91,7 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({route, navi
         }}
         //TODO: Change button state to disabled instead of pointerEvents
         pointerEvents={quotes.length === 0 ? 'none' : 'auto'}>
-        <MagicButton
-          onPress={_ => buyAction(quote)}
-          title={`Buy ${assetItem.info.symbol}`}
-          style={MagicButtonStyle.normal}
-        />
+        <MagicButton onPress={_ => buyAction(quote)} title={`Buy ${assetItem.info.symbol}`} style={MagicButtonStyle.normal} />
       </View>
     </SafeAreaView>
   );

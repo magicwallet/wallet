@@ -9,7 +9,7 @@ import {WalletHeaderAction} from '@magicwallet/views/src/WalletHeader';
 import {useAppDispatch, useAppSelector} from '../../../core/hooks';
 import {GetAssetsSelector, GetTotalFiatValueSelector} from '../../../core/selectors/assets-selectors';
 import {GetCurrentWallet} from '../selector';
-import {GetCurrencySelector} from '../../Settings/selector';
+import {GetCurrencySelector} from '../../../core/selectors/settings-selectors';
 import {WalletService} from '../wallet-service';
 
 export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
@@ -76,9 +76,7 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
       <FlatList
         data={assets}
         renderItem={({item}) => <AssetListItem asset={item} onPress={() => openCoin(item.asset)} />}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={pullRefreshBalance} tintColor={Colors.GRAY} />
-        }
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={pullRefreshBalance} tintColor={Colors.GRAY} />}
         ListHeaderComponent={<WalletHeader fiatValue={fiatValue} onPress={headerAction} />}
       />
     </SafeAreaView>
