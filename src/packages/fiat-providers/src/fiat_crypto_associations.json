@@ -49,6 +49,10 @@
     {
       "provider": "Ramp",
       "symbol": "ETH_ETH"
+    },
+    {
+      "provider": "Transak",
+      "symbol": "ETH_ethereum"
     }
   ],
   "polygon": [
@@ -66,7 +70,7 @@
     },
     {
       "provider": "Transak",
-      "symbol": "MATIC"
+      "symbol": "MATIC_polygon"
     }
   ],
   "solana": [
@@ -105,6 +109,10 @@
     {
       "provider": "MoonPay",
       "symbol": "eth_arbitrum"
+    },
+    {
+      "provider": "Transak",
+      "symbol": "ETH_arbitrum"
     }
   ]
 }

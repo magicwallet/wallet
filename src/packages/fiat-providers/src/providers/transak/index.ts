@@ -1,7 +1,7 @@
 import {FiatProvider, ProviderName} from '../../fiat-provider';
 import {Client} from './client';
 import {QuoteData, QuoteRequest, QuoteResult} from '../../model';
-import {Quote} from './model';
+import {Quote, quoteSymbolSplit} from './model';
 
 export class TransakProvider implements FiatProvider {
   client: Client;
@@ -34,14 +34,15 @@ export class TransakProvider implements FiatProvider {
   }
 
   createRedirectURL(quoteRequest: QuoteRequest): string {
+    const {symbol, network} = quoteSymbolSplit(quoteRequest.cryptoCurrency);
     const params = new URLSearchParams({
       apiKey: this.client.api_key,
       fiatAmount: String(quoteRequest.amount),
       fiatCurrency: quoteRequest.fiatCurrency,
-      cryptoCurrencyCode: quoteRequest.cryptoCurrency,
+      cryptoCurrencyCode: symbol,
       walletAddress: quoteRequest.address,
       disableWalletAddressForm: String(true),
-      network: '',
+      network: network,
     }).toString();
 
     return `${this.client.redirectURL}/?` + params.toString();

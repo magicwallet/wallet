@@ -1,4 +1,4 @@
-import {Quote, Response} from './model';
+import {Quote, quoteSymbolSplit, Response} from './model';
 import {QuoteRequest} from '../../model';
 import {fetchJSON} from '@magicwallet/client';
 
@@ -14,12 +14,13 @@ export class Client {
   }
 
   getQuote(quoteRequest: QuoteRequest): Promise<Response<Quote>> {
+    const {symbol, network} = quoteSymbolSplit(quoteRequest.cryptoCurrency);
     const params = new URLSearchParams({
       ipAddress: quoteRequest.ipAddress,
-      cryptoCurrency: quoteRequest.cryptoCurrency,
+      cryptoCurrency: symbol,
       fiatCurrency: quoteRequest.fiatCurrency,
       fiatAmount: String(quoteRequest.amount),
-      network: '',
+      network: network,
       isBuyOrSell: 'buy',
     });
     const url = `${this.url}/api/v2/currencies/price?`;
