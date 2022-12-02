@@ -13,7 +13,7 @@ import {GetCurrencySelector} from '../../Settings/selector';
 import {WalletService} from '../wallet-service';
 
 export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = React.useState(true);
 
   const dispatch = useAppDispatch();
   const state = useAppSelector(s => s);
@@ -21,7 +21,7 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
   const currency = GetCurrencySelector(state);
   const assets = GetAssetsSelector(state, currentWallet);
   const fiatValue = GetTotalFiatValueSelector(state, currentWallet);
-  const walletService = new WalletService(dispatch, currentWallet);
+  const walletService = new WalletService();
 
   const openCoin = function (_: Asset) {
     // TODO: Enable open coin screen once ready.
@@ -54,12 +54,10 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
   }, []);
 
   const refreshBalance = React.useCallback((wallet: Wallet) => {
-    console.log('refreshBalance: ', wallet);
-
     setRefreshing(true);
 
     walletService
-      .refresh(currency)
+      .refresh(dispatch, wallet, currency)
       .catch(error => {
         console.log('wallet service error: ', error);
       })
@@ -69,7 +67,7 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
   }, []);
 
   useEffect(() => {
-    console.log('wallets changed to: ', currentWallet);
+    console.log(`current wallet changed to: ${currentWallet.name} (${currentWallet.id})`);
     refreshBalance(currentWallet);
   }, [currentWallet]);
 
@@ -78,9 +76,7 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
       <FlatList
         data={assets}
         renderItem={({item}) => <AssetListItem asset={item} onPress={() => openCoin(item.asset)} />}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={pullRefreshBalance} tintColor={Colors.GRAY} />
-        }
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={pullRefreshBalance} tintColor={Colors.GRAY} />}
         ListHeaderComponent={<WalletHeader fiatValue={fiatValue} onPress={headerAction} />}
       />
     </SafeAreaView>
