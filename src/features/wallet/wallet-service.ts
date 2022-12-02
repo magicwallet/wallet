@@ -68,6 +68,8 @@ export class WalletService {
   }
 
   updateFiat(dispatch: AppDispatch, wallet: Wallet, prices: Price[]) {
-    return dispatch(marketUpdateAssetFiatValue(wallet.id, prices)).then(_ => dispatch(marketUpdateTotalFiatValue(wallet.id)));
+    return dispatch(marketUpdateAssetFiatValue(wallet.id, prices)).then(_ =>
+      dispatch(marketUpdateTotalFiatValue(wallet.id)),
+    );
   }
 }

@@ -20,19 +20,19 @@ jobs:
       - name: Run tests
         run: yarn test
 
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: c-hive/gha-yarn-cache@v2
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Run lint
-        run: yarn lint
-
+#  lint:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#      - uses: c-hive/gha-yarn-cache@v2
+#
+#      - name: Install dependencies
+#        run: yarn install
+#
+#      - name: Run lint
+#        run: yarn lint
+#
 #  build_web:
 #    runs-on: ubuntu-latest
 #
