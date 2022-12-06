@@ -31,7 +31,7 @@ export class WalletHeader extends React.Component<AssetListItemProps> {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    padding: 12,
+    padding: 32,
   },
   buttons: {
     flexDirection: 'row',
