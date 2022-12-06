@@ -5,7 +5,7 @@ export const enum Colors {
   LIGHT_BLACK = '#343434',
   VERY_LIGHT_BLACK = '#444444',
   GRAY = '#999999',
-  DARK_GRAY = '#767A81',
+  DARK_GRAY = '#888D96',
   GREEN = '#30D399',
   GREEN_DARK = 'hsla(159, 65%, 51%, 0.1)',
   RED = '#F84E4E',
