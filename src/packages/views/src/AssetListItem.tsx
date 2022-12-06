@@ -84,24 +84,28 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: 'left',
+    fontSize: 15,
     color: Colors.WHITE,
     fontWeight: FontWeight.SEMI_BOLD,
   },
   symbol: {
     textAlign: 'left',
     color: Colors.WHITE,
+    fontWeight: FontWeight.SEMI_BOLD,
   },
   balance: {
     alignSelf: 'center',
     padding: 12,
+    fontSize: 15,
     color: Colors.WHITE,
+    fontWeight: FontWeight.SEMI_BOLD,
   },
   title_container: {
     alignSelf: 'center',
     flexDirection: 'column',
   },
   price_container: {
-    marginTop: 2,
+    marginTop: 4,
     flexDirection: 'row',
   },
   price_value: {
