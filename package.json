@@ -24,7 +24,8 @@
     "build:android:release:assemble": "cd android && ./gradlew assembleRelease",
     "build:android:release:bundle": "cd android && ./gradlew bundleRelease",
     "install:ios": "cd ios && pod install --repo-update",
-    "upgrade:all": "yarn upgrade --latest && yarn install:ios && cd ios && pod update hermes-engine --no-repo-update"
+    "upgrade:all": "yarn upgrade --latest && yarn install:ios && cd ios && pod update hermes-engine --no-repo-update",
+    "ci": "yarn lint && yarn test"
   },
   "dependencies": {
     "@magicwallet/chain-providers": "*",
