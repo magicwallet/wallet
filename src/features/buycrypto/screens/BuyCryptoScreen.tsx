@@ -75,7 +75,9 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({route, navi
             editable={false}
           />
         </View>
-        <Text style={styles.output}>{quote ? `${round(quote.quote.cryptoAmount, 4)} ${assetItem.info.symbol}` : ' '}</Text>
+        <Text style={styles.output}>
+          {quote ? `${round(quote.quote.cryptoAmount, 4)} ${assetItem.info.symbol}` : ' '}
+        </Text>
         <BuyButtons
           amounts={[
             [50, 100, 150],
@@ -91,7 +93,11 @@ export const BuyCryptoScreen: React.FC<Props<Screen.BUY_CRYPTO>> = ({route, navi
         }}
         //TODO: Change button state to disabled instead of pointerEvents
         pointerEvents={quotes.length === 0 ? 'none' : 'auto'}>
-        <MagicButton onPress={_ => buyAction(quote)} title={`Buy ${assetItem.info.symbol}`} style={MagicButtonStyle.normal} />
+        <MagicButton
+          onPress={_ => buyAction(quote)}
+          title={`Buy ${assetItem.info.symbol}`}
+          style={MagicButtonStyle.normal}
+        />
       </View>
     </SafeAreaView>
   );
