@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   unit:
@@ -17,9 +17,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Run tests
-        run: yarn test
-
+      - name: Run CI (linter and tests)
+        run: yarn ci
 #  lint:
 #    runs-on: ubuntu-latest
 #
