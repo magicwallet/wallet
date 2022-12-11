@@ -7,9 +7,6 @@
       "ESNext",
     ],
     "strictPropertyInitialization": false,
-    "include": [
-      "."
-    ],
     "strictNullChecks": true,
   }
 }

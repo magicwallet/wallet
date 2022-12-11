@@ -1,5 +1,15 @@
 {
   "version": 1,
   "assets": {
+    "solana": {
+      "asset": "solana",
+      "name": "Solana",
+      "symbol": "SOL",
+      "decimals": 9,
+      "type": "native",
+      "info": {
+        "is_buy_available": true
+      }
+    }
   }
 }

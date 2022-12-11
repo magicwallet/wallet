@@ -21,6 +21,10 @@
     {
       "provider": "MoonPay",
       "symbol": "bnb"
+    },
+    {
+      "provider": "Transak",
+      "symbol": "BNB_mainnet"
     }
   ],
   "smartchain": [

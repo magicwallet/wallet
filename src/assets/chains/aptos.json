@@ -1,11 +1,11 @@
 {
   "version": 1,
   "assets": {
-    "ethereum": {
-      "asset": "ethereum",
-      "name": "Ethereum",
-      "symbol": "ETH",
-      "decimals": 18,
+    "aptos": {
+      "asset": "aptos",
+      "name": "Aptos",
+      "symbol": "APT",
+      "decimals": 8,
       "type": "native",
       "info": {
         "is_buy_available": true

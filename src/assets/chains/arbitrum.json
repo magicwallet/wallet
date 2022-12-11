@@ -1,9 +1,9 @@
 {
   "version": 1,
   "assets": {
-    "ethereum": {
-      "asset": "ethereum",
-      "name": "Ethereum",
+    "arbitrum": {
+      "asset": "arbitrum",
+      "name": "Arbitrum",
       "symbol": "ETH",
       "decimals": 18,
       "type": "native",

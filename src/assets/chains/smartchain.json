@@ -1,10 +1,10 @@
 {
   "version": 1,
   "assets": {
-    "ethereum": {
-      "asset": "ethereum",
-      "name": "Ethereum",
-      "symbol": "ETH",
+    "smartchain": {
+      "asset": "smartchain",
+      "name": "BNB BSC",
+      "symbol": "BNB",
       "decimals": 18,
       "type": "native",
       "info": {

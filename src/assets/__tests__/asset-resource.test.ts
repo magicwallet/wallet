@@ -1,5 +1,5 @@
-import {GetAssetResource} from '../asset-resource';
-import {Asset, Chain, ChainList} from '@magicwallet/chain-types';
+import {GetAssetResource, GetAssetResources} from '../asset-resource';
+import {Asset, AssetType, Chain, ChainList} from '@magicwallet/chain-types';
 
 describe('test asset exist in asset resource', () => {
   test('token asset', () => {
@@ -9,5 +9,11 @@ describe('test asset exist in asset resource', () => {
 
   test.each(ChainList)('asset chain (%s) exist in asset resource', chain => {
     expect(GetAssetResource(new Asset(chain))).toBeTruthy();
+  });
+
+  test.each(ChainList)('chain (%s) exist in asset resource', chain => {
+    const list = GetAssetResources(chain);
+    expect(list).toBeTruthy();
+    expect(list.assets[chain].type).toBe(AssetType.NATIVE);
   });
 });

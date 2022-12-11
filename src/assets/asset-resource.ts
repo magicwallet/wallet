@@ -1,4 +1,4 @@
-import {Asset, AssetType, Chain} from '@magicwallet/chain-types';
+import {Asset, Chain} from '@magicwallet/chain-types';
 
 export type AssetResourcesList = {
   assets: AssetResources;
@@ -16,9 +16,6 @@ export type AssetResource = {
 };
 
 export function GetAssetResource(asset: Asset): AssetResource | undefined {
-  if (asset.getType() === AssetType.NATIVE) {
-    return require('./chains/coins.json').assets[asset.getId()] as AssetResource;
-  }
   return GetAssetResources(asset.chain).assets[asset.getId()];
 }
 
@@ -31,12 +28,18 @@ export function GetAssetResources(chain: Chain): AssetResourcesList {
     case Chain.SOLANA:
       return require('./chains/solana.json');
     case Chain.APTOS:
+      return require('./chains/aptos.json');
     case Chain.ARBITRUM:
+      return require('./chains/arbitrum.json');
     case Chain.BSC_CHAIN:
+      return require('./chains/smartchain.json');
     case Chain.COSMOS:
+      return require('./chains/cosmos.json');
     case Chain.OSMOSIS:
+      return require('./chains/osmosis.json');
     case Chain.POLYGON:
+      return require('./chains/polygon.json');
     case Chain.BITCOIN:
-      return {assets: {}} as AssetResourcesList;
+      return require('./chains/bitcoin.json');
   }
 }

@@ -1,10 +1,10 @@
 {
   "version": 1,
   "assets": {
-    "ethereum": {
-      "asset": "ethereum",
-      "name": "Ethereum",
-      "symbol": "ETH",
+    "polygon": {
+      "asset": "polygon",
+      "name": "Polygon",
+      "symbol": "MATIC",
       "decimals": 18,
       "type": "native",
       "info": {

@@ -1,6 +1,16 @@
 {
   "version": 1,
   "assets": {
+    "binance": {
+      "asset": "binance",
+      "name": "BNB Chain",
+      "symbol": "BNB",
+      "decimals": 8,
+      "type": "native",
+      "info": {
+        "is_buy_available": true
+      }
+    },
     "binance_TWT-8C2": {
       "asset": "binance_TWT-8C2",
       "name": "Trust Wallet Token",

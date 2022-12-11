@@ -1,11 +1,11 @@
 {
   "version": 1,
   "assets": {
-    "ethereum": {
-      "asset": "ethereum",
-      "name": "Ethereum",
-      "symbol": "ETH",
-      "decimals": 18,
+    "cosmos": {
+      "asset": "cosmos",
+      "name": "Cosmos",
+      "symbol": "ATOM",
+      "decimals": 6,
       "type": "native",
       "info": {
         "is_buy_available": true
