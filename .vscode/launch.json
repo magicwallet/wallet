@@ -3,17 +3,17 @@
     "configurations": [
         {
             "name": "Run iOS",
-            "cwd": "${workspaceFolder}",
-            "type": "reactnative",
             "request": "launch",
-            "platform": "ios"
+            "type": "reactnativedirect",
+            "cwd": "${workspaceFolder}",
+            "platform": "ios",
         },
         {
             "name": "Run Android",
             "cwd": "${workspaceFolder}",
             "type": "reactnative",
             "request": "launch",
-            "platform": "android"
+            "platform": "android",
         },
     ]
 }
