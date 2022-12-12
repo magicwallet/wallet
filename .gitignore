@@ -65,4 +65,4 @@ buck-out/
 *.dSYM.zip
 
 # VSCode
-.vscode
+.vscode/.react
