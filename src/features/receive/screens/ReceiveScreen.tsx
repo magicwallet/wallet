@@ -7,7 +7,7 @@ import {MagicButton, Touchable} from '@magicwallet/core-components';
 import Clipboard from '@react-native-clipboard/clipboard';
 import {useAppSelector} from '../../../core/hooks';
 import {GetAssetSelector, GetAssetTitle} from '../../../core/selectors/assets-selectors';
-import {GetCurrentWallet, GetCurrentWalletAccount} from '../../wallet/selector';
+import {GetCurrentWallet, GetCurrentWalletAccount} from '../../../core/selectors/wallets-selectors';
 import {AssetTypeList} from '@magicwallet/chain-types';
 
 export const ReceiveScreen: React.FC<Props<Screen.RECEIVE>> = ({navigation, route}) => {

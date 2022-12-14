@@ -4,7 +4,7 @@ import {Props, Screen} from '@magicwallet/navigation';
 import {Colors, DefaultStyles} from '@magicwallet/styles';
 import {FormListItem} from '@magicwallet/views';
 import {useAppSelector} from '../../../core/hooks';
-import {GetCurrentWallet} from '../../wallet/selector';
+import {GetCurrentWallet} from '../../../core/selectors/wallets-selectors';
 
 export const SettingsScreen: React.FC<Props<Screen.SETTINGS>> = ({navigation}) => {
   const state = useAppSelector(s => s);
