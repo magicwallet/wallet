@@ -10,12 +10,10 @@
     "strict": true,
     "target": "esnext",
     /* Skip type checking all .d.ts files. */
-    "lib": [
-      "dom",
-      "esnext",
-    ],
+    "lib": ["dom", "esnext"],
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "types": ["node", "jest"]
   }
 }
