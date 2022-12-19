@@ -14,17 +14,19 @@ export class JSOPRPCClient {
       method: method,
       params: params,
     };
-    return fetch(this.url + '/', {
+
+    console.log(JSON.stringify(body));
+    const result = await fetch(this.url + '/', {
       method: 'post',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
-    })
-      .then(res => res.json())
-      .then((value: JSONRPCResponse<T>) => {
-        return value.result;
-      });
+    });
+
+    const data = (await result.json()) as JSONRPCResponse<T>;
+
+    return data.result;
   }
 }

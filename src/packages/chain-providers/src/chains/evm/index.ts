@@ -5,6 +5,7 @@ import {JSOPRPCClient} from '@magicwallet/json-rpc';
 enum METHOD {
   ETH_GET_BALANCE = 'eth_getBalance',
   ETH_BLOCK_NUMBER = 'eth_blockNumber',
+  ETH_CALL = 'eth_call',
 }
 
 export class ChainProviderEVM implements ChainProvider {
@@ -32,5 +33,9 @@ export class ChainProviderEVM implements ChainProvider {
     return this.client.call<string>(METHOD.ETH_BLOCK_NUMBER, ['latest']).then(block => {
       return Promise.resolve(parseInt(block, 16));
     });
+  }
+
+  async readContract(from: string, to: string, data: string): Promise<string> {
+    return await this.client.call<string>(METHOD.ETH_CALL, [{from, to, data}, 'latest']);
   }
 }
