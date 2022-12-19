@@ -14,6 +14,10 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "strictPropertyInitialization": false,
-    "types": ["node", "jest"]
+    "types": ["node", "jest"],
+    "baseUrl": ".",
+    "paths": {
+      "src": ["src/*"]
+    }
   }
 }
