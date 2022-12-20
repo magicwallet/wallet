@@ -2441,7 +2441,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@^29.2.4":
+"@types/jest@29.2.4":
   version "29.2.4"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.2.4.tgz#9c155c4b81c9570dbd183eb8604aa0ae80ba5a5b"
   integrity sha512-PipFB04k2qTRPePduVLTRiPzQfvMeLwUN3Z21hsAKaB/W9IIzgB2pizCL466ftJlcyZqnHoC9ZHpxLGl3fS86A==
@@ -2469,7 +2469,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.13.tgz#dff34f226ec1ac0432ae3b136ec5552bd3b9c0fe"
   integrity sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==
 
-"@types/node@^18.11.17":
+"@types/node@18.11.17":
   version "18.11.17"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.17.tgz#5c009e1d9c38f4a2a9d45c0b0c493fe6cdb4bcb5"
   integrity sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==
@@ -2907,7 +2907,7 @@ acorn@^8.2.4, acorn@^8.5.0, acorn@^8.7.1, acorn@^8.8.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.1.tgz#0a3f9cbecc4ec3bea6f0a80b66ae8dd2da250b73"
   integrity sha512-7zFpHzhnqYKrkYdUjF1HI1bzd0VygEGX8lFk4k5zVMqHEoES+P+7TKI+EvLO9WVMJ8eekdO0aDEK044xTXwPPA==
 
-add@^2.0.6:
+add@2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
   integrity sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==
@@ -3313,7 +3313,7 @@ babel-plugin-macros@^3.1.0:
     cosmiconfig "^7.0.0"
     resolve "^1.19.0"
 
-babel-plugin-module-resolver@^4.1.0:
+babel-plugin-module-resolver@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-module-resolver/-/babel-plugin-module-resolver-4.1.0.tgz#22a4f32f7441727ec1fbf4967b863e1e3e9f33e2"
   integrity sha512-MlX10UDheRr3lb3P0WcaIdtCSRlxdQsB1sBqL7W0raF070bGl1HQQq5K3T2vf2XAYie+ww+5AKC/WrkjRO2knA==
@@ -5655,7 +5655,7 @@ form-data@^3.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
-formik@^2.2.9:
+formik@2.2.9:
   version "2.2.9"
   resolved "https://registry.yarnpkg.com/formik/-/formik-2.2.9.tgz#8594ba9c5e2e5cf1f42c5704128e119fc46232d0"
   integrity sha512-LQLcISMmf1r5at4/gyJigGn0gOwFbeEAlji+N9InZF6LIMXnFNkO42sCI8Jt84YZggpD4cPWObAZaxpEFtSzNA==
@@ -12267,11 +12267,6 @@ yargs@^17.3.1:
     string-width "^4.2.3"
     y18n "^5.0.5"
     yargs-parser "^21.1.1"
-
-yarn@^1.22.19:
-  version "1.22.19"
-  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.19.tgz#4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
-  integrity sha512-/0V5q0WbslqnwP91tirOvldvYISzaqhClxzyUKXYxs07yUILIs5jx/k6CFe8bvKSkds5w+eiOqta39Wk3WxdcQ==
 
 yocto-queue@^0.1.0:
   version "0.1.0"
