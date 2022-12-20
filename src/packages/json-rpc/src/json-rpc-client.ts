@@ -15,7 +15,6 @@ export class JSOPRPCClient {
       params: params,
     };
 
-    console.log(JSON.stringify(body));
     const result = await fetch(this.url + '/', {
       method: 'post',
       headers: {

@@ -23,7 +23,6 @@ export class ContractService {
       throw new Error('undefined provider');
     }
 
-    const result = await provider.readContract(from, to, data);
-    return result;
+    return await provider.readContract(from, to, data);
   }
 }

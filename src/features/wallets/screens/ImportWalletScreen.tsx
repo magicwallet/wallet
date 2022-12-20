@@ -16,7 +16,7 @@ import {ContractService} from '@magicwallet/chain-services';
 
 interface FormValues {
   name: string;
-  addressOrDomainName: string;
+  address: string;
   chain: Chain;
   resolvedAddress?: string;
 }
@@ -33,7 +33,7 @@ export const ImportWalletScreen = () => {
 
   const initialValues: FormValues = {
     name: walletName(assetResource, walletsCount),
-    addressOrDomainName: '',
+    address: '',
     chain: Chain.BNB_CHAIN,
   };
 
@@ -43,16 +43,16 @@ export const ImportWalletScreen = () => {
       errors.name = 'Wallet name is required';
     }
 
-    if (!values.addressOrDomainName) {
-      errors.addressOrDomainName = 'Address is required';
+    if (!values.address) {
+      errors.address = 'Address is required';
     }
 
     return errors;
   };
 
   const onSubmit = (values: FormValues) => {
-    const address = values.resolvedAddress ? values.resolvedAddress : values.addressOrDomainName;
-    const domainName = values.resolvedAddress ? values.addressOrDomainName : null;
+    const address = values.resolvedAddress ? values.resolvedAddress : values.address;
+    const domainName = values.resolvedAddress ? values.address : null;
     dispatch(walletsAddWallet(values.name, values.chain, address, domainName));
     navigation.navigate(Screen.WALLET);
   };
@@ -82,11 +82,11 @@ const InnerForm = ({
   const svc = new ContractService();
 
   React.useEffect(() => {
-    resolve(contextValues.addressOrDomainName, contextValues.chain, svc).then(result => {
+    resolve(contextValues.address, contextValues.chain, svc).then(result => {
       setFieldValue('resolvedAddress', result);
       setResolvedAddress(result);
     });
-  }, [contextValues.addressOrDomainName, contextValues.chain]);
+  }, [contextValues.address, contextValues.chain]);
 
   const createWalletName = (chain: Chain) => {
     const assetResource = GetAssetResource(new Asset(chain))!;
@@ -104,7 +104,7 @@ const InnerForm = ({
         resetForm({
           values: {
             name: createWalletName(chain),
-            addressOrDomainName: values.addressOrDomainName,
+            address: values.address,
             chain: chain,
           },
         });
@@ -112,8 +112,10 @@ const InnerForm = ({
     });
   };
 
+  const isImportDisabled = !!errors.name || !!errors.address;
+
   return (
-    <View style={styles.formik_container}>
+    <View style={styles.form_container}>
       <ChainView chain={values.chain} onPress={handleChainViewOnPress} />
       <TextInput
         editable
@@ -121,7 +123,7 @@ const InnerForm = ({
         onChangeText={handleChange('name')}
         onBlur={handleBlur('name')}
         value={values.name}
-        placeholder="Name"
+        placeholder="Enter a wallet name"
         keyboardType="default"
         enablesReturnKeyAutomatically={true}
         placeholderTextColor={Colors.DARK_GRAY}
@@ -130,20 +132,20 @@ const InnerForm = ({
 
       <TextInput
         editable
-        style={errors.addressOrDomainName ? styles.input_error : styles.input}
-        onChangeText={handleChange('addressOrDomainName')}
-        onBlur={handleBlur('addressOrDomainName')}
-        value={values.addressOrDomainName}
-        placeholder="Enter an address or ens"
+        style={errors.address ? styles.input_error : styles.input}
+        onChangeText={handleChange('address')}
+        onBlur={handleBlur('address')}
+        value={values.address}
+        placeholder="Enter an address or an ENS name"
         keyboardType="default"
         placeholderTextColor={Colors.DARK_GRAY}
       />
       {resolvedAddress ? <Text style={styles.input_domain_name}>{resolvedAddress}</Text> : null}
-      {errors.addressOrDomainName ? <Text style={styles.error_text}>{errors.addressOrDomainName}</Text> : null}
+      {errors.address ? <Text style={styles.error_text}>{errors.address}</Text> : null}
 
       <View style={styles.footer}>
         <MagicButton
-          disabled={!!errors.name || !!errors.addressOrDomainName}
+          disabled={isImportDisabled}
           style={MagicButtonStyle.normal}
           title={'Import Wallet'}
           onPress={() => handleSubmit()}
@@ -160,7 +162,7 @@ const styles = StyleSheet.create({
     //alignItems: 'center',
     //justifyContent: 'center',
   },
-  formik_container: {
+  form_container: {
     flex: 1,
   },
   input_name: {
