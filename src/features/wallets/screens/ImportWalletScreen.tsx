@@ -12,6 +12,7 @@ import {walletName} from '../wallets-selector';
 import {useFormikContext, Formik, FormikErrors, FormikProps} from 'formik';
 import {resolve} from 'src/api/ens/resolver';
 import {useNavigation} from '@react-navigation/native';
+import {ContractService} from '@magicwallet/chain-services';
 
 interface FormValues {
   name: string;
@@ -37,7 +38,7 @@ export const ImportWalletScreen = () => {
   };
 
   const validate = async (values: FormValues): Promise<FormikErrors<FormValues>> => {
-    let errors: FormikErrors<FormValues> = {};
+    const errors: FormikErrors<FormValues> = {};
     if (!values.name) {
       errors.name = 'Wallet name is required';
     }
@@ -78,9 +79,10 @@ const InnerForm = ({
   const {values: contextValues} = useFormikContext<FormValues>();
   const state = useAppSelector(s => s.wallets.wallets);
   const [resolvedAddress, setResolvedAddress] = React.useState<string | null>(null);
+  const svc = new ContractService();
 
   React.useEffect(() => {
-    resolve(contextValues.addressOrDomainName, contextValues.chain).then(result => {
+    resolve(contextValues.addressOrDomainName, contextValues.chain, svc).then(result => {
       setFieldValue('resolvedAddress', result);
       setResolvedAddress(result);
     });
@@ -100,7 +102,11 @@ const InnerForm = ({
         setFieldValue('chain', chain);
 
         resetForm({
-          values: {name: createWalletName(chain), addressOrDomainName: values.addressOrDomainName, chain: chain},
+          values: {
+            name: createWalletName(chain),
+            addressOrDomainName: values.addressOrDomainName,
+            chain: chain,
+          },
         });
       },
     });

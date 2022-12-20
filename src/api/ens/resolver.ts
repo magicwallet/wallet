@@ -4,7 +4,7 @@ import {Chain} from '@magicwallet/chain-types';
 import {ContractService} from '@magicwallet/chain-services';
 
 // https://docs.ens.domains/dapp-developer-guide/resolving-names
-export const resolve = async (name: string, chain: Chain): Promise<string | null> => {
+export const resolve = async (name: string, chain: Chain, svc: ContractService): Promise<string | null> => {
   if (chain !== Chain.ETHEREUM) {
     return null;
   }
@@ -15,7 +15,6 @@ export const resolve = async (name: string, chain: Chain): Promise<string | null
   // 2. Call resolver() on the ENS registry and pass name from above step. It must return an address of a resolver.
   // 3. Call resolver with name hash from step 1.
 
-  const svc = new ContractService();
   const hashedName = hash(name);
 
   const resolverAddress = await getResolverAddress(hashedName, chain, svc);

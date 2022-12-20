@@ -8,12 +8,12 @@ export const hash = (input: string) => {
     node += '00';
   }
 
-  let name = normalize(input);
+  const name = normalize(input);
   if (name) {
-    let labels = name.split('.');
+    const labels = name.split('.');
 
-    for (var i = labels.length - 1; i >= 0; i--) {
-      var labelSha = keccak_256(labels[i]);
+    for (let i = labels.length - 1; i >= 0; i--) {
+      const labelSha = keccak_256(labels[i]);
       const buf = Buffer.from(node + labelSha, 'hex');
       node = keccak_256(buf);
     }
