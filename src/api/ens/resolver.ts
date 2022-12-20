@@ -4,9 +4,12 @@ import {Chain} from '@magicwallet/chain-types';
 import {ContractService} from '@magicwallet/chain-services';
 
 // https://docs.ens.domains/dapp-developer-guide/resolving-names
-export const resolve = async (name: string, chain: Chain) => {
+export const resolve = async (name: string, chain: Chain): Promise<string | null> => {
   if (chain !== Chain.ETHEREUM) {
-    return 'invalid chain';
+    return null;
+  }
+  if (!name.endsWith('.eth')) {
+    return null;
   }
   // 1. Normalize and hash the name
   // 2. Call resolver() on the ENS registry and pass name from above step. It must return an address of a resolver.
@@ -17,12 +20,12 @@ export const resolve = async (name: string, chain: Chain) => {
 
   const resolverAddress = await getResolverAddress(hashedName, chain, svc);
   if (resolverAddress === null) {
-    return 'Unknown ens address';
+    return null;
   }
 
   const resolvedAddress = await resolveName(hashedName, resolverAddress, chain, svc);
   if (resolvedAddress === null) {
-    return 'Resolver returned empty response';
+    return null;
   }
 
   return resolvedAddress;
