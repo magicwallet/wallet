@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {FlatList, RefreshControl, SafeAreaView, StyleSheet} from 'react-native';
+import {FlatList, RefreshControl, SafeAreaView, StyleSheet, Text} from 'react-native';
 import {Props, Screen, ScreenNavigator, SelectAssetType} from '@magicwallet/navigation';
 import {AssetListItem, WalletHeader} from '@magicwallet/views';
 import {Asset} from '@magicwallet/chain-types';
@@ -22,6 +22,13 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
   const assets = GetAssetsSelector(state, currentWallet);
   const fiatValue = GetTotalFiatValueSelector(state, currentWallet);
   const walletService = new WalletService();
+
+  const displayAddressOrName =
+    currentWallet.accounts[0].domainNames.length > 0
+      ? currentWallet.accounts[0].domainNames[0].value
+      : `${currentWallet.accounts[0].address.slice(0, 6)}..${currentWallet.accounts[0].address.slice(
+          currentWallet.accounts[0].address.length - 4,
+        )}`;
 
   const openCoin = function (_: Asset) {
     // TODO: Enable open coin screen once ready.
@@ -73,6 +80,7 @@ export const WalletScreen: React.FC<Props<Screen.WALLET>> = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.address}>{displayAddressOrName}</Text>
       <FlatList
         data={assets}
         renderItem={({item}) => <AssetListItem asset={item} onPress={() => openCoin(item.asset)} />}
@@ -89,5 +97,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.BLACK,
+  },
+  address: {
+    color: Colors.WHITE,
+    textAlign: 'center',
   },
 });
