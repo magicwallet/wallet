@@ -93,12 +93,10 @@ const InnerForm = ({
     return walletName(assetResource, state.length);
   };
 
-  // const [selectedChain, onChangeSelectedChain] = React.useState<Chain>(values.chain);
   const handleChainViewOnPress = () => {
     navigation.navigate(Screen.SELECT_CHAIN, {
       chain: values.chain,
       selectChain: chain => {
-        // onChangeSelectedChain(chain);
         setFieldValue('chain', chain);
 
         resetForm({
@@ -136,6 +134,7 @@ const InnerForm = ({
         onChangeText={handleChange('address')}
         onBlur={handleBlur('address')}
         value={values.address}
+        autoCapitalize="none"
         placeholder="Enter an address or an ENS name"
         keyboardType="default"
         placeholderTextColor={Colors.DARK_GRAY}

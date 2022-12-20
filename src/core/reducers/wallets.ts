@@ -73,7 +73,9 @@ export const walletsAddWallet =
       payload: {
         name,
         type: WalletType.SINGLE,
-        accounts: [{chain: chain, address: address, domainNames: constructDomainNameArg(domainName, chain)}],
+        accounts: [
+          {chain: chain, address: address.toLowerCase(), domainNames: constructDomainNameArg(domainName, chain)},
+        ],
       },
     });
   };
