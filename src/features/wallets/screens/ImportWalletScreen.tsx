@@ -79,13 +79,18 @@ const InnerForm = ({
   const {values: contextValues} = useFormikContext<FormValues>();
   const state = useAppSelector(s => s.wallets.wallets);
   const [resolvedAddress, setResolvedAddress] = React.useState<string | null>(null);
-  const svc = new ContractService();
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const service = new ContractService();
 
   React.useEffect(() => {
-    resolve(contextValues.address, contextValues.chain, svc).then(result => {
+    setIsLoading(true);
+    resolve(contextValues.address, contextValues.chain, service).then(result => {
       setFieldValue('resolvedAddress', result);
       setResolvedAddress(result);
+      setIsLoading(false);
     });
+
+    setIsLoading(false);
   }, [contextValues.address, contextValues.chain]);
 
   const createWalletName = (chain: Chain) => {
@@ -139,6 +144,7 @@ const InnerForm = ({
         keyboardType="default"
         placeholderTextColor={Colors.DARK_GRAY}
       />
+      {isLoading ? <Text style={styles.input_domain_name}>X</Text> : null}
       {resolvedAddress ? <Text style={styles.input_domain_name}>{resolvedAddress}</Text> : null}
       {errors.address ? <Text style={styles.error_text}>{errors.address}</Text> : null}
 
