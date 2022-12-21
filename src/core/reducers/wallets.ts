@@ -11,7 +11,17 @@ type AddNewWallet = {
 type Account = {
   chain: Chain;
   address: string;
+  domainNames: DomainName[];
 };
+
+type DomainName = {
+  provider: DomainNameProvider;
+  value: string;
+};
+
+enum DomainNameProvider {
+  ENS,
+}
 
 type Wallet = {
   id: string;
@@ -56,16 +66,39 @@ interface WalletsStateSelectWallet {
 type WalletsStateUpdateAction = WalletsStateAddAWallet | WalletsStateDeleteWallet | WalletsStateSelectWallet;
 
 export const walletsAddWallet =
-  (name: string, chain: Chain, address: string) => async (dispatch: Dispatch<WalletsStateAddAWallet>) => {
+  (name: string, chain: Chain, address: string, domainName: string | null) =>
+  async (dispatch: Dispatch<WalletsStateAddAWallet>) => {
     return dispatch({
       type: ACTION.ADD_WALLET,
       payload: {
         name,
         type: WalletType.SINGLE,
-        accounts: [{chain: chain, address: address}],
+        accounts: [
+          {chain: chain, address: address.toLowerCase(), domainNames: constructDomainNameArg(domainName, chain)},
+        ],
       },
     });
   };
+
+const constructDomainNameArg = (input: string | null, chain: Chain): DomainName[] => {
+  if (input === null) {
+    return [];
+  }
+
+  switch (chain) {
+    case Chain.ETHEREUM: {
+      return [
+        {
+          provider: DomainNameProvider.ENS,
+          value: input,
+        },
+      ];
+    }
+    default: {
+      return [];
+    }
+  }
+};
 
 export const walletsDeleteWallet = (wallet: Wallet) => async (dispatch: Dispatch<WalletsStateDeleteWallet>) => {
   return dispatch({

@@ -7,6 +7,7 @@ export interface MagicButtonProps {
   title: string;
   style: MagicButtonStyle;
   onPress?: ((event: GestureResponderEvent) => void) | undefined;
+  disabled: boolean;
 }
 
 export class MagicButton extends React.Component<MagicButtonProps> {
@@ -16,8 +17,9 @@ export class MagicButton extends React.Component<MagicButtonProps> {
       <Touchable
         style={{
           ...styles.container,
-          backgroundColor: buttonStyle.backgroundColor,
+          backgroundColor: this.props.disabled ? Colors.GRAY : buttonStyle.backgroundColor,
         }}
+        disabled={this.props.disabled}
         underlayColor={buttonStyle.underlayColor}
         onPress={this.props.onPress}>
         <Text style={styles.title}>{this.props.title}</Text>
