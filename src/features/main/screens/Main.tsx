@@ -11,9 +11,9 @@ import {
   WalletScreen,
   WelcomeScreen,
 } from '../../../core/screens';
-import {SettingsNavigator} from '../../Settings/Screens/SettingsStack';
 import {SelectAssetNavigator} from '../../select_assets/screens/SelectAssetNavigator';
 import {useAppSelector} from '../../../core/hooks';
+import {SettingsNavigator} from '../../settings/screens/SettingsStack';
 
 export const Main: () => React.ReactElement = () => {
   const state = useAppSelector(s => s);
