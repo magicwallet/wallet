@@ -44,7 +44,7 @@
     "@reduxjs/toolkit": "1.9.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.71.0",
+    "react-native": "0.70.6",
     "react-native-device-info": "10.3.0",
     "react-native-fast-image": "8.6.3",
     "react-native-mmkv": "2.5.1",
