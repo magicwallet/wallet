@@ -1,14 +1,12 @@
 import React from 'react';
-import {FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {Props, Screen} from '@magicwallet/navigation';
-import {Colors, DefaultStyles, MagicButtonStyle} from '@magicwallet/styles';
-import {FormListItem, MagicButton} from '@magicwallet/views';
-import {walletsDeleteWallet, walletsSelectWallet} from '../../../core/reducers/wallets';
-import {useAppDispatch, useAppSelector} from '../../../core/hooks';
-import {getWalletsSelector} from '../index';
+import {Colors, DefaultStyles} from '@magicwallet/styles';
+import {FormListItem} from '@magicwallet/views';
+import {useAppSelector} from '../../../core/hooks';
+import {getWalletsSelector} from '../../../core/selectors/wallets-selectors';
 
 export const WalletsScreen: React.FC<Props<Screen.WALLETS>> = ({navigation}) => {
-  const dispatch = useAppDispatch();
   const state = useAppSelector(s => s);
   const wallets = getWalletsSelector(state);
 
@@ -21,34 +19,11 @@ export const WalletsScreen: React.FC<Props<Screen.WALLETS>> = ({navigation}) => 
           <FormListItem
             title={item.name}
             onPress={() => {
-              dispatch(walletsSelectWallet(item.wallet)).then(_ => {
-                navigation.goBack();
-                navigation.pop();
-              });
+              navigation.navigate(Screen.WALLET_DETAILS, {wallet: item.wallet});
             }}
           />
         )}
       />
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: Colors.BLACK,
-        }}>
-        <Text>Current Wallet: {state.wallets.current}</Text>
-
-        <MagicButton
-          style={MagicButtonStyle.normal}
-          title={'Delete Wallet'}
-          onPress={() => {
-            //TODO: Fix
-            // @ts-ignore
-            dispatch(walletsDeleteWallet(state.wallets.current));
-            navigation.goBack();
-          }}
-        />
-      </View>
     </SafeAreaView>
   );
 };
