@@ -3,7 +3,7 @@ import {SafeAreaView, StyleSheet, TextInput, View} from 'react-native';
 import {Props, Screen} from '@magicwallet/navigation';
 import {Colors, MagicButtonStyle, Spacing} from '@magicwallet/styles';
 import {MagicButton} from '@magicwallet/views';
-import {walletsDeleteWallet, walletsRenameWallet} from '../../../core/reducers/wallets';
+import {walletsDeleteWallet, walletsRenameWallet, walletsSelectWallet} from '../../../core/reducers/wallets';
 import {useAppDispatch, useAppSelector} from '../../../core/hooks';
 import {getWalletSelector} from '../../../core/selectors/wallets-selectors';
 import {Wallet} from '@magicwallet/types';
@@ -28,6 +28,14 @@ export const WalletDetailsScreen: React.FC<Props<Screen.WALLET_DETAILS>> = ({nav
     dispatch(walletsDeleteWallet(w.id)).then(r => r);
   };
 
+  const handleSelect = (w: Wallet) => {
+    //Is there a better way to handle wallet deletion?
+    navigation.goBack();
+    navigation.goBack();
+    navigation.pop();
+    dispatch(walletsSelectWallet(w)).then(r => r);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <TextInput
@@ -47,6 +55,8 @@ export const WalletDetailsScreen: React.FC<Props<Screen.WALLET_DETAILS>> = ({nav
           backgroundColor: Colors.BLACK,
           padding: Spacing.screen.padding,
         }}>
+        <MagicButton style={MagicButtonStyle.light} title={'Select Wallet'} onPress={_ => handleSelect(wallet)} />
+        <View style={{padding: Spacing.button.padding}} />
         <MagicButton style={MagicButtonStyle.destruction} title={'Delete Wallet'} onPress={_ => handleDelete(wallet)} />
       </View>
     </SafeAreaView>
